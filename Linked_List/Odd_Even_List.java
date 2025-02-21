@@ -1,4 +1,18 @@
 package Linked_List;
+
+/*
+        Description :-
+            We have to find rearrange a linked list in odd even manner...
+            e.g :- 
+                input = 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
+                output = 1 -> 3 -> 5 -> 7 -> 9 -> 2 -> 4 -> 6 -> 8
+
+        Approach :-
+            > We'll have two list odd and even...
+            > We have to iterate through the whole list and update their values...
+            > Then we just have to connect the odd list with the even list and return it...
+*/
+
 public class Odd_Even_List {
     private static class Node{
         int val;
