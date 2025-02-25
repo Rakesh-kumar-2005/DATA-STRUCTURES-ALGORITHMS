@@ -10,7 +10,7 @@ import java.util.Arrays;
         Approach :-
             > So,the typical left and right pointer,then iterate until left <= right...
             > then we have to check the sorted part by checking the comparing the left
-                with the mid value and if it satisfies then we have to check for the remaining
+                with the mid-value and if it satisfies then we have to check for the remaining
                 space and vice-verse for the else condition...
 */
 
