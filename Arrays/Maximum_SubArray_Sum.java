@@ -1,5 +1,22 @@
 package Arrays;
 
+/*
+        Description :-
+            This Java program finds the maximum sub-array sum using a divide-and-conquer
+            approach. It recursively divides the array, computes the max sum for left,
+            right, and crossing sub-arrays, and returns the highest value...
+
+        Approach :-
+            > The algorithm recursively splits the array into left and right halves,
+                computing their maximum sub-array sums...
+            > It also calculates the maximum sum of a sub-array crossing the midpoint...
+            > The crossing sum is found by extending from the middle to the left and right...
+            > The function returns the maximum of the three values: 
+                left sub-array, right sub-array, and crossing sub-array...
+            > The base case handles a single element.
+            > This method follows O(n log n) time complexity, making it efficient for large inputs...
+*/
+
 public class Maximum_SubArray_Sum {
 
     private static int maxSubarraySum(int[] nums) {
