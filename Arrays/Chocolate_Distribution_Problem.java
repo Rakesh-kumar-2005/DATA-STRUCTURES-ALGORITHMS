@@ -1,5 +1,21 @@
 package Arrays;
 
+/*
+        Description :-
+             Chocolate Distribution Problem by finding the minimum difference between
+             the maximum and minimum chocolates distributed to students. It sorts the array
+             and uses a sliding window approach....
+
+
+        Approach :-
+            > The program first sorts the chocolate packets array.
+            > It then iterates through the array, considering every possible subset of m chocolates.
+                For each subset, it calculates the difference between the maximum and minimum chocolates
+                and updates the minimum difference found...
+            > The sliding window technique ensures an optimal solution in O(n log n) time complexity due
+                to sorting, followed by an O(n) traversal for subset evaluation....
+*/
+
 import java.util.Arrays;
 
 public class Chocolate_Distribution_Problem {
