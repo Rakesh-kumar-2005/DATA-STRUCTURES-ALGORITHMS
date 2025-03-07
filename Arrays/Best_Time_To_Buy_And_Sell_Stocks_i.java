@@ -18,7 +18,7 @@ package Arrays;
             > This ensures an efficient solution with O(n) complexity...
 */
 
-public class Best_Time_To_Buy_And_Sell_Stocks_i {
+public class Best_Time_To_Buy_And_Sell_Stocks_I {
 
     private static int maxProfit(int[] prices) {
         int min = Integer.MAX_VALUE;
