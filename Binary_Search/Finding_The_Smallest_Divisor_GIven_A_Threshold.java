@@ -53,7 +53,7 @@ public class Finding_The_Smallest_Divisor_GIven_A_Threshold {
 		int[] arr = {44, 22, 33, 11, 1};
 		int threshold = 5;
 
-		System.out.println(smallestDivisor(arr, threshold));
+		System.out.println("For not to exceed the Threshold value the smallest divisor is = " + smallestDivisor(arr, threshold));
 	}
 
 }
