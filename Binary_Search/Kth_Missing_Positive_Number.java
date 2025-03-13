@@ -2,9 +2,9 @@ package Binary_Search;
 
 /*
         Description :-
-			Given a sorted array of distinct positive integers, find the k-th missing positive number that
-			does not appear in the array. The missing numbers are counted in an increasing sequence
-			from 1 onward...
+		Given a sorted array of distinct positive integers, find the k-th missing positive number that
+		does not appear in the array. The missing numbers are counted in an increasing sequence
+		from 1 onward...
 
         Approach :-
               > This solution uses binary search to efficiently find the kth missing positive number...
