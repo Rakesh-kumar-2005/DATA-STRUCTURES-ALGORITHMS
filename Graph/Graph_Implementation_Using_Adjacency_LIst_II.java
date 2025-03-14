@@ -5,37 +5,29 @@ package Graph;
             Following program demonstrates the implementation of a graph using Array of Arraylist of user-defined data-type..
 
         Approach :-
-            Edge Class:
+	    -> Edge Class:-
+		i. Simple class representing a directed edge from a source vertex (src) to a destination vertex (dest)...
+		ii. Each edge stores both its starting and ending points...
 
-Simple class representing a directed edge from a source vertex (src) to a destination vertex (dest)
-Each edge stores both its starting and ending points
+	    -> Graph Representation:-
+		i. The graph is represented as an array of ArrayLists: ArrayList<Edge>[] graph...
+		ii. Each index in this array represents a vertex...
+		iii. The ArrayList at each index contains all edges originating from that vertex
 
+	    -> Key Methods:-
+		i. addEdge Method:-
+		   - Initializes each vertex's adjacency list as an empty ArrayList...
+		   - Adds specific edges to create a predefined graph structure...
+		   - Each edge is added to the source vertex's adjacency list...
 
-Graph Representation:
-
-The graph is represented as an array of ArrayLists: ArrayList<Edge>[] graph
-Each index in this array represents a vertex
-The ArrayList at each index contains all edges originating from that vertex
-
-
-
-Key Methods:
-
-addEdge Method:
-
-Initializes each vertex's adjacency list as an empty ArrayList
-Adds specific edges to create a predefined graph structure
-Each edge is added to the source vertex's adjacency list
-
-
-printGraph Method:
-
-Iterates through each vertex's adjacency list
-Prints all edges in the format "src->dest"
-This provides a visual representation of the graph's structure
-			> Time and Space Complexity:
-				-> Time Complexity : O(V + E) where V is the number of vertices and E is the number of edges...
-				-> Space Complexity : O(V) for the accessing all neighbour of vertices...
+	        ii. printGraph Method:-
+		   - Iterates through each vertex's adjacency list...
+		   - Prints all edges in the format "src -> dest"...
+		   - This provides a visual representation of the graph's structure...
+	
+ 	> Time and Space Complexity:
+		-> Time Complexity : O(V + E) where V is the number of vertices and E is the number of edges...
+		-> Space Complexity : O(V) for the accessing all neighbour of vertices...
 */
 
 import java.util.ArrayList;
