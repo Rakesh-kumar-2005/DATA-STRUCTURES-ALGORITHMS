@@ -37,10 +37,11 @@ import java.util.Arrays;
 
 public class Aggressive_Cows {
 
-private static boolean canWePlace(int[] stalls, int dist, int cows) {
+	private static boolean canWePlace(int[] stalls, int dist, int cows) {
 		int n = stalls.length;
 		int cntCows = 1;
 		int last = stalls[ 0 ];
+		
 		for (int i = 1; i < n; i++) {
 			if (stalls[ i ] - last >= dist) {
 				cntCows++;
@@ -62,7 +63,9 @@ private static boolean canWePlace(int[] stalls, int dist, int cows) {
 			int mid = (low + high) / 2;
 			if (canWePlace(stalls, mid, k)) {
 				low = mid + 1;
-			} else high = mid - 1;
+			} else{
+				high = mid - 1;
+			}
 		}
 		return high;
 	}
