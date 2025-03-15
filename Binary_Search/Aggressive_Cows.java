@@ -37,7 +37,7 @@ import java.util.Arrays;
 
 public class Aggressive_Cows {
 
-	private static boolean canWePlace(int[] stalls, int dist, int cows) {
+private static boolean canWePlace(int[] stalls, int dist, int cows) {
 		int n = stalls.length;
 		int cntCows = 1;
 		int last = stalls[ 0 ];
