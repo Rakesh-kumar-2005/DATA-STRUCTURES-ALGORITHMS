@@ -1,6 +1,7 @@
 package Binary_Search;
 
 /*
+
 Description:
    Following program demonstrates the solution to the Book Allocation problem using Binary Search...
 
@@ -35,6 +36,7 @@ Approach:
 > Time and Space Complexity:
    -> Time Complexity: O(N log S) where N is the number of books and S is the sum of all pages...
    -> Space Complexity: O(1) extra space (excluding input)...
+   
 */
 
 public class Book_Allocation {
