@@ -81,7 +81,7 @@ public class Surrounded_Regions {
 				int newRow = currRow + delrow[i];
 				int newCol = currCol + delcol[i];
 
-				if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m && board[newRow][newCol] == 'O' && visited[newRow][newCol] == false) {
+				if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m && board[newRow][newCol] == 'O' && !visited[newRow][newCol]) {
 					q.add(new Pair(newRow, newCol));
 					visited[newRow][newCol] = true;
 				}
