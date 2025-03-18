@@ -53,85 +53,72 @@ import java.util.Queue;
 
 public class Cycle_Detection_Using_BFS {
 
-	 static class Pair {
-		  int parent;
-		  int node;
+    static class Pair {
+	int parent;
+	int node;
 
-		  public Pair(int parent, int node) {
-				this.parent = parent;
-				this.node = node;
-		  }
+	public Pair(int parent, int node) {
+	    this.parent = parent;
+	    this.node = node;
+	}
+    }
+	
+    private static boolean cycle(int source, int v, ArrayList<ArrayList<Integer>> adj, boolean[] vis) {
+
+	Queue<Pair> q = new LinkedList<>();
+	vis[source] = true;
+	q.add(new Pair(- 1, source));
+
+	while (! q.isEmpty()) {
+	    Pair curr = q.remove();
+	    int currParent = curr.parent;
+	    int currNode = curr.node;
+
+	    for (int adjacentNode : adj.get(currNode)) {
+		if (! vis[adjacentNode]) {
+		     vis[adjacentNode] = true;
+		     q.add(new Pair(currNode, adjacentNode));
+		} else if (currParent != adjacentNode) return true;
+	    }
+	}
+	return false;
+    }
+
+    public static ArrayList<ArrayList<Integer>> createAdjacencyList(int vertices, int[][] edges) {
+
+	 ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+
+	 for (int i = 0; i < vertices; i++) {
+		 adj.add(new ArrayList<>());
 	 }
 
-	 private static boolean cycle(int source, int v, ArrayList<ArrayList<Integer>> adj, boolean[] vis) {
+	 for (int[] edge : edges) {
+	     int u = edge[0];
+	     int v = edge[1];
+		 
+	     adj.get(u).add(v);
+	     adj.get(v).add(u);
+         }
+	 return adj;
+     }
 
-		  Queue<Pair> q = new LinkedList<>();
-		  vis[source] = true;
-		  q.add(new Pair(- 1, source));
+     public static void main(String[] args) {
+	 System.out.println("Following is a graph with 5 vertices and 8 edges : ");
+	 int vertices = 5;
+	 int[][] edges = {{0, 1}, {0, 4}, {1, 2}, {1, 3}, {1, 4}, {2, 3}, {3, 4}};
 
-		  while (! q.isEmpty()) {
-				Pair curr = q.remove();
-				int currParent = curr.parent;
-				int currNode = curr.node;
+	 ArrayList<ArrayList<Integer>> adjacencyList = createAdjacencyList(vertices, edges);
 
-				for (int adjacentNode : adj.get(currNode)) {
-					 if (! vis[adjacentNode]) {
-						  vis[adjacentNode] = true;
-						  q.add(new Pair(currNode, adjacentNode));
-					 } else if (currParent != adjacentNode) return true;
-				}
-		  }
-		  return false;
+	 for (int i = 0; i < adjacencyList.size(); i++) {
+	    System.out.print(i + " -> ");
+		for (int j = 0; j < adjacencyList.get(i).size(); j++) {
+		     System.out.print(adjacencyList.get(i).get(j) + " ");
+		}
+	    System.out.println();
 	 }
-
-	 private static boolean isCycle(ArrayList<ArrayList<Integer>> adj) {
-		  int v = adj.size();
-		  boolean[] vis = new boolean[v];
-
-		  for (int i = 0; i < v; i++) {
-				if (! vis[i]) {
-					 if (cycle(i, v, adj, vis)) {
-						  return true;
-					 }
-				}
-		  }
-		  return false;
-	 }
-
-	 public static ArrayList<ArrayList<Integer>> createAdjacencyList(int vertices, int[][] edges) {
-
-		  ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-
-		  for (int i = 0; i < vertices; i++) {
-				adj.add(new ArrayList<>());
-		  }
-
-		  for (int[] edge : edges) {
-				int u = edge[0];
-				int v = edge[1];
-
-				adj.get(u).add(v);
-				adj.get(v).add(u);
-		  }
-		  return adj;
-	 }
-
-	 public static void main(String[] args) {
-		  System.out.println("Following is a graph with 5 vertices and 8 edges : ");
-		  int vertices = 5;
-		  int[][] edges = {{0, 1}, {0, 4}, {1, 2}, {1, 3}, {1, 4}, {2, 3}, {3, 4}};
-
-		  ArrayList<ArrayList<Integer>> adjacencyList = createAdjacencyList(vertices, edges);
-
-		  for (int i = 0; i < adjacencyList.size(); i++) {
-				System.out.print(i + " -> ");
-
-				for (int j = 0; j < adjacencyList.get(i).size(); j++) {
-					 System.out.print(adjacencyList.get(i).get(j) + " ");
-				}
-
-				System.out.println();
-		  }
-		  System.out.println("Is there a cycle in the above graph? " + isCycle(adjacencyList));
-	 }
+	     
+	System.out.println("Is there a cycle in the above graph? " + isCycle(adjacencyList));
+	     
+    }
+	
 }
