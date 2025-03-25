@@ -41,49 +41,51 @@ Approach:
 
 public class Book_Allocation {
 
-	private static int findPages(int[] pages, int students) {
-		if (pages.length < students) return - 1;
+    private static int findPages(int[] pages, int students) {
+        if (pages.length < students) {
+            return -1;
+        }
 
-		int low = Integer.MIN_VALUE;
-		int high = 0;
+        int low = Integer.MIN_VALUE;
+        int high = 0;
 
-		for (int num : pages) {
-			low = Math.max(num, low);
-			high += num;
-		}
+        for (int num : pages) {
+            low = Math.max(num, low);
+            high += num;
+        }
 
-		while (low <= high) {
-			int mid = low + (high - low) / 2;
-			int currStudent = helper(pages, mid);
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int currStudent = helper(pages, mid);
 
-			if (currStudent > students) {
-				low = mid + 1;
-			} else {
-				high = mid - 1;
-			}
-		}
-		return low;
-	}
+            if (currStudent > students) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return low;
+    }
 
-	private static int helper(int[] pages, int maxPages) {
-		int currStudent = 1;
-		int temp = 0;
+    private static int helper(int[] pages, int maxPages) {
+        int currStudent = 1;
+        int temp = 0;
 
-		for (int num : pages) {
-			if (temp + num > maxPages) {
-				currStudent++;
-				temp = num;
-			} else {
-				temp += num;
-			}
-		}
-		return currStudent;
-	}
+        for (int num : pages) {
+            if (temp + num > maxPages) {
+                currStudent++;
+                temp = num;
+            } else {
+                temp += num;
+            }
+        }
+        return currStudent;
+    }
 
-	public static void main(String[] args) {
-		int[] pages = {25, 46, 28, 49, 24};
-		int students = 4;
+    public static void main(String[] args) {
+        int[] pages = {25, 46, 28, 49, 24};
+        int students = 4;
 
-		System.out.println("The minimum number of pages required is = " + findPages(pages, students));
-	}
+        System.out.println("The minimum number of pages required is = " + findPages(pages, students));
+    }
 }
