@@ -18,42 +18,40 @@ package Binary_Search;
 
 public class Finding_The_Smallest_Divisor_GIven_A_Threshold {
 
-	private static int helper(int[] arr, int div) {
-		int ans = 0;
+    private static int helper(int[] arr, int div) {
+        int ans = 0;
+        for (int num : arr) {
+            ans += (int) Math.ceil((double) num / (double) div);
+        }
+        return ans;
+    }
 
-		for (int num : arr) {
-			ans += (int) Math.ceil((double) num / (double) div);
-		}
-		return ans;
-	}
+    private static int smallestDivisor(int[] arr, int threshold) {
+        if (arr.length > threshold) return -1;
 
-	private static int smallestDivisor(int[] arr, int threshold) {
-		if (arr.length > threshold) return - 1;
+        int low = 1;
+        int high = Integer.MIN_VALUE;
+        for (int num : arr) {
+            high = Math.max(high, num);
+        }
 
-		int low = 1;
-		int high = Integer.MIN_VALUE;
-		for (int num : arr) {
-			high = Math.max(high, num);
-		}
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int total = helper(arr, mid);
 
-		while (low <= high) {
-			int mid = (low + high) / 2;
-			int total = helper(arr, mid);
+            if (total <= threshold) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return low;
+    }
 
-			if (total <= threshold) {
-				high = mid - 1;
-			} else {
-				low = mid + 1;
-			}
-		}
-		return low;
-	}
+    public static void main(String[] args) {
+        int[] arr = {44, 22, 33, 11, 1};
+        int threshold = 5;
 
-	public static void main(String[] args) {
-		int[] arr = {44, 22, 33, 11, 1};
-		int threshold = 5;
-
-		System.out.println("For not to exceed the Threshold value the smallest divisor is = " + smallestDivisor(arr, threshold));
-	}
-
+        System.out.println("For not to exceed the Threshold value the smallest divisor is = " + smallestDivisor(arr, threshold));
+    }
 }
