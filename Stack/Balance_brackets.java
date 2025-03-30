@@ -1,21 +1,61 @@
-
-/* it's actually a common question for the use of stack.
-   so the question is to return a true or false value.
-   In a String(only of brackets) for every opening bracket('(') there should be a closing
-   bracket(')') in order , if not then it'll return false...*/
 package Stack;
+
+/*
+
+    Description:
+        Following program demonstrates the solution to the "Simple Balanced Brackets" problem 
+        using Stack-based Validation Approach...
+
+    Problem Statement:
+        -> Determine if a given string of parentheses is balanced...
+        -> A string is considered balanced if each opening parenthesis has a corresponding closing parenthesis in the correct order...
+        -> The problem focuses on a single type of bracket: parentheses ()...
+        -> Every closing parenthesis must match the most recently opened unmatched parenthesis...
+
+    Approach:
+        > Stack-based Parentheses Validation:
+            i. Use a stack data structure to track opening parentheses...
+            ii. Process the string character by character...
+            iii. Push opening parentheses onto the stack...
+            iv. For closing parentheses, pop from the stack if not empty...
+            v. A balanced string will result in an empty stack...
+
+    Algorithm Steps:
+        -> Initialize an empty stack for parentheses tracking...
+        -> Process each character in the input string:
+            1. If character is an opening parenthesis '(', push onto stack...
+            2. If character is a closing parenthesis ')':
+                * Check if stack is empty - return false if empty...
+                * Pop the top element from stack...
+        -> Final Validation:
+            1. Check if stack is empty after processing all characters...
+            2. Return true if empty (balanced), false otherwise (unbalanced)...
+
+    Key Characteristics:
+        -> Efficiently handles nested parentheses...
+        -> Uses LIFO (Last In First Out) property of stacks for validation...
+        -> Ensures proper nesting and ordering of parentheses...
+        -> Returns early for obvious unbalanced cases...
+
+        > Validation Mechanism:
+            -> Opening parentheses are always pushed onto stack...
+            -> Closing parentheses must have corresponding opening parentheses...
+            -> Stack becomes empty when all parentheses are properly matched...
+
+    Time and Space Complexity:
+        -> Time Complexity: O(n) where n is the length of the input string...
+        -> Space Complexity: O(n) for the stack in worst case scenario...
+
+*/
+
 import java.util.Stack;
+
 public class Balance_brackets {
 
-    /*So the process is - we have traverse the whole String , and if the character is '(' then
-     we have to push into a stack and if we face a closing bracket then we would pop it , and if
-     the size of the stack reaches to zero in the middle of the loop then we return it's false,
-     otherwise at the end of the operation we will return the boolean value of the size of the stack ,
-     bcz we know for every closing bracket there should be a closing bracket, if not then the stack won't
-     be empty so the value answer will be false...*/
-    public static boolean balanceBrackets(String st){
+   public static boolean balanceBrackets(String st){
         Stack<Character> helper = new Stack<>();
         int n = st.length();
+      
         for (int i=0; i<n; i++){
             char c = st.charAt(i);
             if(c == '(') helper.push(c);
@@ -26,7 +66,9 @@ public class Balance_brackets {
         }
         return helper.isEmpty();
     }
+   
     public static void main(String[] args) {
+       
         String st = "(())(())()";
         System.out.println(balanceBrackets(st));
     }
