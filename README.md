@@ -16,7 +16,7 @@ This repository contains optimized solutions for various Data Structures & Algor
 
 🎯 Dynamic Programming (DP)
 
-🌍 Graph Algorithms (BFS, DFS, Dijkstra’s, etc.)
+🌍 Graph Algorithms
 
 🌳 Tree & Binary Search Tree (BST)
 
