@@ -1,7 +1,6 @@
 package Binary_Search;
 
 /*
-
 Description:
    Following program demonstrates the solution to the Split Array Largest Sum problem using Binary Search...
 
@@ -38,7 +37,6 @@ Approach:
 > Time and Space Complexity:
    -> Time Complexity: O(N log S) where N is the size of the array and S is the sum of all elements...
    -> Space Complexity: O(1) extra space (excluding input)...
-   
 */
 
 public class Split_Array_Largest_Sum {
