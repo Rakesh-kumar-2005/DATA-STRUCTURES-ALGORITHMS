@@ -1,6 +1,7 @@
 package Binary_Search;
 
 /*
+
 Description:
    Following program demonstrates the solution to the Split Array Largest Sum problem using Binary Search...
 
@@ -41,49 +42,50 @@ Approach:
 
 public class Split_Array_Largest_Sum {
 
-	private static int splitArray(int[] nums, int key) {
-		if (nums.length < key) return 0;
+    private static int splitArray(int[] nums, int key) {
+	if (nums.length < key) {
+		return 0;
+	}
+	int low = nums[0];
+	int high = 0;
 
-		int low = nums[0];
-		int high = 0;
-
-		for (int number : nums) {
-			low = Math.max(low, number);
-			high += number;
-		}
-
-		while (low <= high) {
-			int mid = low + (high - low) / 2;
-			int currKey = helper(nums, mid);
-
-			if (currKey > key) {
-				low = mid + 1;
-			} else {
-				high = mid - 1;
-			}
-		}
-		return low;
+	for (int number : nums) {
+	   low = Math.max(low, number);
+	   high += number;
 	}
 
-	private static int helper(int[] nums, int maxSum) {
-		int currSum = 0;
-		int count = 1;
+	while (low <= high) {
+	    int mid = low + (high - low) / 2;
+	    int currKey = helper(nums, mid);
 
-		for (int number : nums) {
-
-			if (currSum + number <= maxSum) {
-				currSum += number;
-			} else {
-				currSum = number;
-				count++;
-			}
-		}
-		return count;
+	    if (currKey > key) {
+		low = mid + 1;
+	    } else {
+		high = mid - 1;
+	    }
 	}
+	return low;
+    }
 
-	public static void main(String[] args) {
-		int[] nums = {10, 20, 30, 40};
-		int key = 2;
-		System.out.println("The minimized largest sum of sub-array is = " + splitArray(nums, key));
+    private static int helper(int[] nums, int maxSum) {
+	int currSum = 0;
+	int count = 1;
+
+	for (int number : nums) {
+
+	   if (currSum + number <= maxSum) {
+	       currSum += number;
+	   } else {
+	       currSum = number;
+		count++;
+	   }
 	}
+	return count;
+     }
+
+     public static void main(String[] args) {
+	int[] nums = {10, 20, 30, 40};
+	int key = 2;
+	System.out.println("The minimized largest sum of sub-array is = " + splitArray(nums, key));
+     }
 }
