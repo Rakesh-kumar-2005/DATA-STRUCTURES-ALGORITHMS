@@ -75,7 +75,8 @@ public class Lowest_Common_Ancestor_Of_Two_Given_Nodes {
 
         if (leftNode == null) {
             return rightNode;
-        } else if (rightNode == null) {
+        } 
+        else if (rightNode == null) {
             return leftNode;
         }
 
@@ -129,7 +130,6 @@ public class Lowest_Common_Ancestor_Of_Two_Given_Nodes {
 
         System.out.println("Lowest Common Ancestor of the Binary Tree is : ");
         System.out.println(ans.val);
-
 
     }
 
