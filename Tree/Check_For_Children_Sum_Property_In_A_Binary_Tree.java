@@ -83,7 +83,8 @@ public class Check_For_Children_Sum_Property_In_A_Binary_Tree {
 
         if (childVal >= root.val) {
             root.val = childVal;
-        } else {
+        } 
+        else {
 
             if (root.left != null) {
                 root.left.val = root.val;
@@ -97,7 +98,7 @@ public class Check_For_Children_Sum_Property_In_A_Binary_Tree {
 
         changeTree(root.left);
         changeTree(root.right);
-
+     
         childVal = 0;
         if (root.left != null) {
             childVal += root.left.val;
@@ -177,7 +178,6 @@ public class Check_For_Children_Sum_Property_In_A_Binary_Tree {
 
         System.out.println("Inorder traversal of the modified Binary Tree according to the children sum property is : ");
         System.out.println(inOrderTraversal(root, ans));
-
 
     }
 
