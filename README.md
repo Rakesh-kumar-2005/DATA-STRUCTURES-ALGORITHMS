@@ -34,10 +34,6 @@ This repository contains optimized solutions for various Data Structures & Algor
 
 🎉 Contributions are welcome! Feel free to submit pull requests, add explanations, or improve existing solutions.
 
-# 📜 License
-
-📝 This repository is licensed under the MIT License.
-
 # 🙌 Thank You!
 
 💙 Thank you for visiting this repository! If you find it useful, don’t forget to star ⭐ the repo and share it with others
