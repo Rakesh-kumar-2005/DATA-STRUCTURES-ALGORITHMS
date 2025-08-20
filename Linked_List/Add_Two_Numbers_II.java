@@ -1,5 +1,63 @@
 package Linked_List;
 
+/*
+
+Description:
+    -> This program adds two non-empty linked lists that represent two non-negative integers.
+    -> The digits are stored in forward order (most significant digit comes first).
+    -> Each node in the linked list contains a single digit.
+    -> The output is also returned as a linked list in forward order.
+
+Problem Statement:
+    -> Given two linked lists l1 and l2 representing two integers:
+        l1 = 7 → 2 → 4 → 3  (represents 7243)
+        l2 = 5 → 6 → 4      (represents 564)
+    -> The sum is 7243 + 564 = 7807.
+    -> The result should be returned as a linked list: 7 → 8 → 0 → 7.
+
+Approach:
+    1. Use two stacks (st1, st2) to reverse the order of digits from both lists.
+    2. Pop elements from both stacks and add them with a carry.
+    3. For each sum, create a new node and insert it at the front of the result list.
+    4. Continue until both stacks are empty and carry is 0.
+
+Algorithm Steps:
+    1. Traverse both linked lists and push their values into two stacks.
+    2. Initialize carry = 0 and result list as null.
+    3. While either stack is non-empty or carry != 0:
+        a. Pop values from both stacks (or take 0 if empty).
+        b. Compute sum = val1 + val2 + carry.
+        c. Update carry = sum / 10.
+        d. Create a new node with value = sum % 10.
+        e. Insert this node at the front of the result list.
+    4. Return the result list head.
+
+Key Observations:
+    -> Using stacks simulates reverse traversal since digits are stored in forward order.
+    -> Unlike the simpler "Add Two Numbers I" problem (digits in reverse order), 
+       here we cannot directly traverse and add from head to tail.
+    -> Carry must always be handled carefully when building the new list.
+
+Time and Space Complexity:
+    -> Time Complexity: O(m + n), where m and n are the lengths of the two linked lists.
+    -> Space Complexity: O(m + n), for storing values in stacks.
+
+Example Walkthrough:
+    Input:
+        l1 = 7 → 2 → 4 → 3
+        l2 = 5 → 6 → 4
+    Process:
+        Stack1 = [7, 2, 4, 3], Stack2 = [5, 6, 4]
+        Pop values and add with carry:
+            3 + 4 = 7 → Node(7)
+            4 + 6 = 10 → Node(0), carry = 1
+            2 + 5 + 1 = 8 → Node(8)
+            7 + 0 = 7 → Node(7)
+    Output:
+        Result = 7 → 8 → 0 → 7
+
+*/
+
 import java.util.Stack;
 
 public class Add_Two_Numbers_II {
