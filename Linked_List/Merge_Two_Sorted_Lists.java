@@ -1,5 +1,49 @@
 package Linked_List;
 
+/*
+
+Description:
+    -> This program merges two sorted linked lists into a single sorted linked list.
+    -> It uses a dummy (helper) node to simplify pointer handling while constructing the new list.
+    -> The result is a new linked list that maintains the sorted order.
+
+Problem Statement:
+    Given the heads of two sorted linked lists, merge them into one sorted linked list 
+    and return its head.
+
+Example:
+    Input:
+        List 1: 1 -> 3 -> 5
+        List 2: 2 -> 4 -> 6
+    Output:
+        Merged List: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+
+Approach:
+    1. Create a dummy node (`ans`) to serve as the head placeholder.
+    2. Use a pointer (`helper`) to build the new list by comparing nodes from both lists.
+    3. At each step, append the smaller value node to the result and move the respective pointer.
+    4. Once one list is exhausted, append the remaining nodes of the other list.
+    5. Return the merged list starting from `ans.next`.
+
+Helper Methods:
+    -> displayList(Node head): Prints all nodes of the linked list in "a->b->c" format.
+
+Key Variables:
+    -> temp1, temp2 : pointers for traversing input lists.
+    -> helper       : pointer to build the new merged list.
+    -> ans          : dummy node, whose next points to the merged list.
+
+Time and Space Complexity:
+    -> Time Complexity: O(n + m), where n and m are the lengths of the two lists.
+    -> Space Complexity: O(n + m) in this implementation (since new nodes are created).
+       (If reusing existing nodes, space can be O(1)).
+
+Conclusion:
+    This program efficiently merges two sorted linked lists into a single sorted list 
+    while preserving their order.
+
+*/
+
 public class Merge_Two_Sorted_Lists {
 
     private static class Node {
