@@ -1,4 +1,4 @@
-package Stacks;
+package Stack;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -29,3 +29,4 @@ public class Remove_Consecutive_Subsequence {
         System.out.println(removeConsecutive(word));
     }
 }
+
