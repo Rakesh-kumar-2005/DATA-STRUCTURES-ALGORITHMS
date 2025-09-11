@@ -1,4 +1,4 @@
-package Stacks;
+package Stack;
 
 import java.util.Stack;
 
@@ -37,3 +37,4 @@ public class Next_Greater_Element {
         print(ansArr);
     }
 }
+
