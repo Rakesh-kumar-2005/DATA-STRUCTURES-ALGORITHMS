@@ -1,4 +1,4 @@
-package Stacks;
+package Stack;
 
 /*
 
@@ -86,3 +86,4 @@ public class Balance_Brackets_2 {
         System.out.println(isBalanced(brackets,st));
     }
 }
+
