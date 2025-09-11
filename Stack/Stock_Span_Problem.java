@@ -1,4 +1,4 @@
-package Stacks;
+package Stack;
 
 import java.util.Stack;
 
@@ -38,3 +38,4 @@ public class Stock_Span_Problem {
         print(profitDays);
     }
 }
+
