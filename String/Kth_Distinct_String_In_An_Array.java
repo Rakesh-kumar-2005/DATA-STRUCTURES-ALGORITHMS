@@ -34,7 +34,7 @@ Example:
         "d"
 
 Approach:
-    1. Use a LinkedHashMap<String, Integer> to store string frequencies 
+    1. Use a LinkedHashMap<String, Integer> to store string frequencies
        while preserving insertion order.
     2. Iterate through `arr`:
         - Increase frequency count for each string.
@@ -44,7 +44,7 @@ Approach:
     4. If no such k-th distinct string exists, return "".
 
 Why LinkedHashMap?
-    -> Unlike HashMap, LinkedHashMap preserves the insertion order, 
+    -> Unlike HashMap, LinkedHashMap preserves the insertion order,
        ensuring we return the k-th distinct string in the same order as in the input.
 
 Time and Space Complexity:
@@ -54,7 +54,7 @@ Time and Space Complexity:
     -> Space Complexity: O(n), for storing string frequencies.
 
 Conclusion:
-    This program efficiently finds the k-th distinct string in an array 
+    This program efficiently finds the k-th distinct string in an array
     while respecting the original order of elements.
 
 */
