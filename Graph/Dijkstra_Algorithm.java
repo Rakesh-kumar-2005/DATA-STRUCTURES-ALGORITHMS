@@ -1,5 +1,89 @@
 package Graph;
 
+/*
+
+Description:
+    -> This program implements **Dijkstra’s Algorithm** to find the shortest path 
+       from a source vertex to all other vertices in a weighted, directed graph 
+       with **non-negative edge weights**.
+
+    -> Dijkstra’s Algorithm is one of the most efficient algorithms for single-source 
+       shortest path problems and works using a **greedy approach** with the help 
+       of a **Priority Queue (Min-Heap)** for optimal selection of the next vertex 
+       with the smallest known distance.
+
+Problem Statement:
+    -> Given a graph represented as an adjacency list where:
+         graph[u] = List of {v, weight} pairs,
+       find the minimum distance from a source vertex `src` to all vertices.
+
+Key Concepts:
+    • Each vertex maintains the shortest known distance from the source.
+    • Initially, all distances are set to infinity except for the source (set to 0).
+    • Using a min-priority queue, at each step, the vertex with the smallest 
+      distance is picked, and its neighbors are relaxed (updated if a shorter path is found).
+
+Algorithm Steps:
+    1. Initialize:
+         - Create a distance array and set all values to infinity (MAX_VALUE).
+         - Set distance[src] = 0.
+         - Use a PriorityQueue (min-heap) to process nodes based on smallest distance.
+    
+    2. Relaxation Process:
+         - Remove the node with the smallest distance from the priority queue.
+         - For each adjacent node:
+              -> Calculate new distance = current distance + edge weight.
+              -> If this distance is smaller than the existing value:
+                     update it and push the node into the priority queue.
+    
+    3. Continue until all reachable nodes are processed.
+
+Data Representation:
+    -> The graph is represented as:
+          ArrayList<ArrayList<ArrayList<Integer>>> graph
+       where:
+          graph.get(u).get(i).get(0) = adjacent vertex
+          graph.get(u).get(i).get(1) = edge weight
+
+Example Graph (for visualization):
+        (0)
+       /   \
+     4/     \1
+     /       \
+   (1)---2---(2)
+     \5     /3
+      \   /
+       (3)
+        \
+         \1
+          (4)
+
+Execution Example:
+    Input:
+        vertices = 5
+        source = 0
+    Output:
+        Shortest distances from vertex 0:
+            Vertex 0: 0
+            Vertex 1: 3
+            Vertex 2: 1
+            Vertex 3: 4
+            Vertex 4: 3
+
+Time and Space Complexity:
+    -> Time Complexity: O((V + E) * log V)
+         - Each vertex is inserted into the priority queue once.
+         - Heap operations (insert + extract-min) take O(log V).
+    -> Space Complexity: O(V + E)
+         - To store graph and distance arrays.
+
+Key Points:
+    -> Works only with non-negative edge weights.
+    -> Efficient for sparse graphs.
+    -> PriorityQueue ensures that the smallest distance node is always processed next.
+
+*/
+
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
@@ -56,7 +140,6 @@ public class Dijkstra_Algorithm {
     public static void main(String[] args) {
 
         int vertices = 5;
-
         ArrayList<ArrayList<ArrayList<Integer>>> graph = new ArrayList<>();
 
         for (int i = 0; i < vertices; i++) {
