@@ -12,7 +12,6 @@ package Queue;
                 and at the time of deletion increase the front pointer.
 */
 
-
 public class Queue_Implementation_using_array {
 
     public static class Queue{
@@ -90,3 +89,4 @@ public class Queue_Implementation_using_array {
         q.display();
     }
 }
+
