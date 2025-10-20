@@ -1,5 +1,87 @@
 package Graph;
 
+/*
+
+Description:
+    -> This program finds the shortest path from the top-left corner (0,0)
+       to the bottom-right corner (n-1,m-1) in a given binary matrix, 
+       where each cell can be either **0 (open path)** or 1 (blocked cell).
+
+    -> Unlike 8-directional movement, this version allows movement in only **4 directions**:
+       Up, Down, Left, and Right.
+
+Problem Statement:
+    -> Given an n × m binary matrix `grid`:
+         * 0 represents a traversable cell.
+         * 1 represents a blocked cell.
+       You must find the length of the shortest clear path from (0,0) to (n-1,m-1)
+       moving only in the 4 cardinal directions.
+       If no such path exists, return **-1**.
+
+Algorithm Used:
+    -> **Breadth-First Search (BFS)** algorithm — since it finds the shortest path 
+       in an unweighted grid efficiently.
+
+Approach:
+    1. Check initial conditions:
+         - If the start (0,0) or end (n-1,m-1) cell is blocked, return -1.
+         - If the matrix is 1×1 and the only cell is open, return 1.
+
+    2. Use a queue for BFS:
+         - Each element of the queue stores a `tuple(distance, row, col)`.
+         - Start BFS from (0,0) with an initial distance of 1.
+
+    3. Maintain a `distances[][]` matrix initialized to `Integer.MAX_VALUE` 
+       to record the minimum distance to each cell.
+
+    4. For each cell dequeued, explore all **4 directions**:
+         Up:    (-1, 0)
+         Right: (0, 1)
+         Down:  (1, 0)
+         Left:  (0, -1)
+
+    5. For each valid and unblocked neighbor:
+         - If a shorter distance is found, update it in `distances`.
+         - If the destination (n-1,m-1) is reached, return the distance immediately.
+         - Otherwise, enqueue the new position.
+
+    6. If BFS completes without reaching the target, return -1.
+
+Example Input:
+    int[][] grid = {
+        {0, 0, 0},
+        {1, 1, 0},
+        {1, 1, 0}
+    };
+
+Output:
+    The Shortest Path in the Binary Matrix (from the first cell to the last cell 
+    by the visited cell which has the value of 0) is : 5
+
+Explanation:
+    The shortest path of 5 steps:
+        (0,0) → (0,1) → (0,2) → (1,2) → (2,2)
+
+Edge Cases Considered:
+    ✅ Start or end cell is blocked → return -1  
+    ✅ Single cell matrix → return 1 if cell = 0, else -1  
+    ✅ Fully blocked matrix → return -1  
+    ✅ Path exists through 4-directional traversal only  
+
+Key Concepts Used:
+    -> Breadth-First Search (BFS)
+    -> Queue-based level traversal
+    -> Distance tracking using 2D array
+    -> Boundary and validity checks
+
+Time and Space Complexity:
+    -> Time Complexity: O(N × M)
+         - Each cell is visited at most once and explores 4 directions.
+    -> Space Complexity: O(N × M)
+         - For queue and distance matrix.
+
+*/
+
 import java.util.LinkedList;
 import java.util.Queue;
 
