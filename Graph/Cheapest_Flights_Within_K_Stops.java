@@ -108,7 +108,7 @@ public class Cheapest_Flights_Within_K_Stops {
         }
     }
 
-    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+    private static int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
 
         ArrayList<ArrayList<Pair>> graph = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -157,6 +157,20 @@ public class Cheapest_Flights_Within_K_Stops {
         }
 
         return distances[dst];
+    }
+
+    public static void main(String[] args) {
+
+        int n = 4;
+        int[][] flights = {{0, 1, 100}, {1, 2, 100}, {2, 0, 100}, {1, 3, 600}, {2, 3, 200}};
+
+        int src = 0;
+        int dst = 3;
+
+        int k = 1;
+        int cheapestPrice = findCheapestPrice(n, flights, src, dst, k);
+
+        System.out.println("From source " + src + " to destination " + dst + " with at most number of " + k + " stops will take us the distance of " + cheapestPrice);
     }
 
 }
