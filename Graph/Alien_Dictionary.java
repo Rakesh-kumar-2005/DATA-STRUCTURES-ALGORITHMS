@@ -3,7 +3,7 @@ package Graph;
 /*
 
 Description:
-    -> This program solves the **Alien Dictionary** problem using **Topological Sorting**...
+    -> This program solves the Alien Dictionary problem using Topological Sorting...
     -> Given a sorted dictionary of an alien language with a known number of characters `K`, the task is to find the correct order of characters...
 
 Problem Statement:
@@ -179,3 +179,4 @@ public class Alien_Dictionary {
     }
 
 }
+
