@@ -3,7 +3,7 @@ package Graph;
 /*
 
 Description:
-    -> This program detects whether a **directed graph** contains a cycle using Kahn’s Algorithm (BFS-based Topological Sorting)...
+    -> This program detects whether a Directed graph contains a cycle using Kahn’s Algorithm (BFS-based Topological Sorting)...
     -> The presence of a cycle is determined by checking whether a valid topological ordering is possible...
 
 Problem Statement:
@@ -125,3 +125,4 @@ public class Cycle_Detection_In_Directed_Graph_II {
     }
 
 }
+
