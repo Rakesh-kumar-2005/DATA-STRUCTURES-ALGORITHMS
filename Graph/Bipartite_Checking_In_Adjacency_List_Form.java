@@ -51,6 +51,7 @@ Approach:
 
 */
 
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -116,4 +117,5 @@ public class Bipartite_Checking_In_Adjacency_List_Form {
         }
 
     }
+
 }
