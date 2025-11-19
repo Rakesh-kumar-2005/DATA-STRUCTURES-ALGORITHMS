@@ -89,11 +89,14 @@ public class Bipartite_Checking_In_Matrix_Form {
     }
 
     public static void main(String[] args) {
+        
         int[][] graph = {{1, 3}, {0, 2}, {1, 3}, {0, 2}};
         if (isBipartite(graph)) {
             System.out.println("This graph is a bipartite graph...");
         } else {
             System.out.println("This graph is not a bipartite graph...");
         }
+      
     }
+  
 }
