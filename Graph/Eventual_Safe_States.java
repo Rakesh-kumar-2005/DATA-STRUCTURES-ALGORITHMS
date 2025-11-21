@@ -60,6 +60,7 @@ import java.util.ArrayList;
 public class Eventual_Safe_States {
 
     private static boolean dfsCheck(int start, ArrayList<ArrayList<Integer>> adj, boolean[] visited, boolean[] pathVisited, boolean[] check) {
+        
         visited[start] = true;
         pathVisited[start] = true;
 
@@ -77,7 +78,9 @@ public class Eventual_Safe_States {
 
         check[start] = true;
         pathVisited[start] = false;
+        
         return false;
+    
     }
 
     private static ArrayList<Integer> eventualSafeNodes(int V, ArrayList<ArrayList<Integer>> adj) {
@@ -122,3 +125,4 @@ public class Eventual_Safe_States {
     }
 
 }
+
