@@ -73,7 +73,7 @@ public class Minimum_Spanning_Tree_Kruskals_Algorithm {
         }
 
         public void unionByRank(int u, int v) {
-            // FIX: Find ultimate parents first
+
             int ulp_u = findParent(u);
             int ulp_v = findParent(v);
 
@@ -135,7 +135,6 @@ public class Minimum_Spanning_Tree_Kruskals_Algorithm {
     private static ArrayList<Edge> getEdges(ArrayList<ArrayList<ArrayList<Integer>>> adj, int v) {
         ArrayList<Edge> edges = new ArrayList<>();
 
-        // Extract all edges from adjacency list
         for (int i = 0; i < v; i++) {
             for (int j = 0; j < adj.get(i).size(); j++) {
                 
