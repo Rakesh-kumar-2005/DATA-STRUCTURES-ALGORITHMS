@@ -94,7 +94,7 @@ public class Disjoint_Set_Find_Parent_And_Union_Set {
                 parent.set(ulp_u, ulp_v);
             } else {
                 parent.set(ulp_v, ulp_u);
-                rank.set(ulp_v, rank.get(ulp_u) + 1);
+                rank.set(ulp_u, rank.get(ulp_u) + 1);
             }
 
         }
@@ -167,3 +167,4 @@ public class Disjoint_Set_Find_Parent_And_Union_Set {
     }
 
 }
+
