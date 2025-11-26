@@ -63,40 +63,48 @@ public class Number_Of_Distinct_Island {
 	int[] cols = {0, 1, 0, - 1};
 
 	for (int i = 0; i < 4; i++) {
-	    int newRow = currRow + rows[i];
-            int newCol = currCol + cols[i];
+
+		int newRow = currRow + rows[i];
+        int newCol = currCol + cols[i];
 
 	    if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m && ! visited[newRow][newCol] && grid[newRow][newCol] == 1) {
 	        dfs(newRow, newCol, visited, grid, currList, baseRow, baseCol);
 	    }
+		
 	}
+	
    }
 
    private static int countDistinctIslands(int[][] grid) {
         int n = grid.length;
-	int m = grid[0].length;
-
-	boolean[][] visited = new boolean[n][m];
-	HashSet<ArrayList<String>> st = new HashSet<>();
-
-	for (int i = 0; i < n; i++) {
-	    for (int j = 0; j < m; j++) {
-		if (grid[i][j] == 1 && ! visited[i][j]) {
-	            ArrayList<String> currList = new ArrayList<>();
-		    dfs(i, j, visited, grid, currList, i, j);
-		    st.add(currList);
+		int m = grid[0].length;
+	
+		boolean[][] visited = new boolean[n][m];
+		HashSet<ArrayList<String>> st = new HashSet<>();
+	
+		for (int i = 0; i < n; i++) {
+		    for (int j = 0; j < m; j++) {
+			
+				if (grid[i][j] == 1 && ! visited[i][j]) {
+		            ArrayList<String> currList = new ArrayList<>();
+			    	dfs(i, j, visited, grid, currList, i, j);
+			    	st.add(currList);
+				}
+				
+		    }
 		}
-	    }
-	}
-	return st.size();
-    }
+	   
+		return st.size();
+    
+   }
 
     public static void main(String[] args) {
-	int[][] grid = {{1, 1, 0, 0, 0},
-	                {1, 0, 0, 1, 1},
-			{0, 0, 0, 0, 0},
-			{1, 1, 0, 1, 1},
-			{0, 0, 0, 1, 0}};
-	System.out.println("The number of distinct islands in the given grid is = " + countDistinctIslands(grid));
+		int[][] grid = {{1, 1, 0, 0, 0},
+		                {1, 0, 0, 1, 1},
+						{0, 0, 0, 0, 0},
+						{1, 1, 0, 1, 1},
+						{0, 0, 0, 1, 0}};
+		System.out.println("The number of distinct islands in the given grid is = " + countDistinctIslands(grid));
      }
+	
 }
