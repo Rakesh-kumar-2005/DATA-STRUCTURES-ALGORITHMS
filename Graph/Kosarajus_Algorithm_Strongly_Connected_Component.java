@@ -106,10 +106,8 @@ public class Kosarajus_Algorithm_Strongly_Connected_Component {
         boolean[] visited = new boolean[V];
 
         for (int i = 0; i < V; i++) {
-            for (int it : adj.get(i)) {
-                if (! visited[it]) {
-                    dfs(it, adj, visited, st);
-                }
+            if (! visited[it]) {
+                dfs(it, adj, visited, st);
             }
         }
 
@@ -295,3 +293,4 @@ public class Kosarajus_Algorithm_Strongly_Connected_Component {
     }
 
 }
+
