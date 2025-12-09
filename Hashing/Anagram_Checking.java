@@ -89,7 +89,9 @@ public class Anagram_Checking {
         }
         return true;
     }
+    
     public static void main(String[] args) {
         System.out.println("Anagram checking - " + isAnagram("silent","lis"));
     }
+    
 }
