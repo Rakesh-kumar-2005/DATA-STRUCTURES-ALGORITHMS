@@ -82,6 +82,7 @@ public class Balanced_Binary_Tree {
     }
 
     private static int maxDepth(TreeNode root) {
+        
         if (root == null) {
             return 0;
         }
@@ -128,4 +129,5 @@ public class Balanced_Binary_Tree {
 
         System.out.println("Is it a Balanced tree : " + isBalanced(root));
     }
+    
 }
