@@ -130,9 +130,7 @@ public class Frog_Jump_With_K_Distance {
 
         for (int i = 1; i <= k; i++) {
             if (idx - i >= 0) {
-
                 int currJump = minCost(idx - i, height, dp, k) + Math.abs(height[idx - i] - height[idx]);
-
                 minSteps = Math.min(currJump, minSteps);
             }
         }
