@@ -41,4 +41,5 @@ public class Container_With_Max_Water_Capacity {
         int[] heights = {1, 8, 6, 2, 5, 4, 8, 3, 7};
         System.out.println("Maximum water capacity = " + maxArea(heights));
     }
+        
 }
