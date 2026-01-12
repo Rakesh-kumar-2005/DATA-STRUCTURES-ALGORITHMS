@@ -25,12 +25,15 @@ public class Best_Time_To_Buy_And_Sell_Stocks_II {
                 total_profit += (arr[i + 1] - arr[i]);
             }
         }
+            
         return total_profit;
     }
 
     public static void main(String[] args) {
+        
         int[] prices = {7, 1, 5, 3, 6, 4};
         System.out.println("Max Profit in The consecutive Prices is = " + maxProfit(prices));
+            
     }
 
 }
