@@ -23,6 +23,7 @@ import java.util.HashSet;
 public class Contains_Duplicate {
 
 	private static boolean duplicateChecking(int[] arr) {
+		
 		if (arr.length == 1) {
 			return false;
 		}
@@ -35,10 +36,12 @@ public class Contains_Duplicate {
 				set.add(number);
 			}
 		}
+		
 		return false;
 	}
 
 	public static void main(String[] args) {
+		
 		int[] arr = {1, 2, 2, 33, 5, 66, 7, 22, 2};
 		boolean ans = duplicateChecking(arr);
 
@@ -50,6 +53,7 @@ public class Contains_Duplicate {
 		} else {
 			System.out.println("This array doesn't contain any duplicate elements...");
 		}
+		
 	}
 
 }
