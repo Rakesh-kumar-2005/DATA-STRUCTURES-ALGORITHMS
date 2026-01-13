@@ -60,6 +60,7 @@ public class Count_Inversion_Brute_Force {
                 }
             }
         }
+        
         return count;
     }
 
@@ -67,9 +68,10 @@ public class Count_Inversion_Brute_Force {
     public static void main(String[] args) {
 
         int[] arr = {8, 7, 6, 5, 4, 3, 2, 1};
-
         int count = countInversion(arr);
+        
         System.out.println("Total number of inversions is = " + count);
+    
     }
 
 }
