@@ -113,21 +113,22 @@ public class Count_Inversion_Optimal_Solution {
 
             count += merge(arr, low, mid, high);
         }
+        
         return count;
     }
 
     private static int countInversion(int[] arr) {
-
         int[] temp = arr;
-
         return mergeSort(temp, 0, temp.length - 1);
     }
 
     public static void main(String[] args) {
+        
         int[] arr = {8, 7, 6, 5, 4, 3, 2, 1};
-
         int count = countInversion(arr);
+        
         System.out.println("Total number of inversions is = " + count);
+
     }
 
 }
