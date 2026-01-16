@@ -1,21 +1,120 @@
 package Dynamic_Programming;
 
+/*
+
+Description:
+  This program solves the **Ninja Training** problem using **Dynamic Programming** with four progressively optimized approaches...
+  A ninja trains for **N days**, and on each day can perform **one of three activities**...
+  Each activity gives certain points, but the **same activity cannot be repeated on consecutive days**...
+  The objective is to **maximize the total training points** over all days...
+
+Problem Statement:
+  -> Given a 2D array `activities[n][3]`...
+       • n = number of days...
+       • 3 activities per day: Running, Fighting, Learning...
+  -> activities[i][j] represents points for doing activity `j` on day `i`...
+  -> Constraint: You cannot perform the same activity on two consecutive days...
+  -> Find the **maximum total points** achievable...
+
+Core Idea:
+  -> On each day, choose the best activity that is **different from the previous day's activity**...
+  -> This creates overlapping subproblems → perfect fit for Dynamic Programming...
+  -> Track the **last activity performed** to enforce the constraint...
+
+State Definition:
+  -> dp[day][lastActivity] = maximum points achievable from day 0 to `day`
+     given that `lastActivity` was performed on the previous day...
+  -> lastActivity ∈ {0, 1, 2, 3}
+       • 0 = Running
+       • 1 = Fighting
+       • 2 = Learning
+       • 3 = No activity (used for starting state)...
+
+Approach 1: Pure Recursion (Brute Force):
+  -> Try all valid activities on each day...
+  -> For each choice, recursively solve for the previous day...
+  -> Time Complexity grows exponentially due to repeated subproblems...
+  -> Used mainly for understanding the problem structure...
+
+Approach 2: Memoization (Top-Down DP):
+  -> Same recursive logic as Approach 1...
+  -> Store results of subproblems in a 2D memo table...
+  -> Avoids recomputation of states...
+  -> Converts exponential time into linear time...
+
+Approach 3: Tabulation (Bottom-Up DP):
+  -> Build the DP table iteratively from day 0 to day n-1...
+  -> Initialize base case for day 0 explicitly...
+  -> For each day and each possible last activity, compute best score...
+  -> Eliminates recursion and stack overhead...
+
+Approach 4: Space Optimization:
+  -> Observe that dp[day] depends only on dp[day-1]...
+  -> Replace 2D DP table with two 1D arrays (`prev` and `current`)...
+  -> Reduces space from O(n×4) to O(4) = O(1)...
+
+Base Case Handling:
+  -> Day 0: Choose the maximum activity excluding `lastActivity`...
+  -> Single day input works naturally with the same logic...
+  -> Equal values or decreasing values handled uniformly by DP...
+
+Recurrence Relation:
+  -> dp[day][last] = max(
+         activities[day][activity] + dp[day-1][activity]
+     ) for all activity ≠ last...
+
+Algorithm Steps:
+  -> Define DP state with day and last activity...
+  -> Initialize base case (day 0)...
+  -> Iterate days and activities respecting constraints...
+  -> Return dp[lastDay][3] (no restriction on last activity)...
+
+Time Complexity:
+  -> Recursion: O(3^n)...
+  -> Memoization: O(n × 4)...
+  -> Tabulation: O(n × 4)...
+  -> Space Optimized: O(n × 4)...
+
+Space Complexity:
+  -> Recursion: O(n) call stack...
+  -> Memoization: O(n × 4) DP table + recursion stack...
+  -> Tabulation: O(n × 4) DP table...
+  -> Space Optimized: O(4) auxiliary space...
+
+Key Insights:
+  -> Track previous choices to enforce constraints...
+  -> Add a dummy state (`lastActivity = 3`) to simplify logic...
+  -> Space optimization is possible when only previous state is needed...
+  -> A classic DP pattern: **choice + constraint + optimization**...
+
+Final Verdict:
+  -> Clean and scalable solution to a constrained optimization problem...
+  -> Demonstrates evolution from brute force to optimal DP...
+  -> Space Optimized approach is best for production use...
+  -> Excellent example of multi-dimensional DP with state compression...
+
+*/
+
 import java.util.Arrays;
 
 public class Ninja_Training {
 
     private static int recursiveSolution(int[][] activities, int currentDay, int lastActivity) {
+        
         if (currentDay == 0) {
             int maxPoints = 0;
+            
             for (int activity = 0; activity < 3; activity++) {
                 if (activity != lastActivity) {
                     maxPoints = Math.max(maxPoints, activities[0][activity]);
                 }
             }
+            
             return maxPoints;
         }
 
         int maxPoints = 0;
+        
         for (int activity = 0; activity < 3; activity++) {
             if (activity != lastActivity) {
                 int currentPoints = activities[currentDay][activity] +
@@ -28,21 +127,25 @@ public class Ninja_Training {
     }
 
     private static int memoizationSolution(int[][] activities, int currentDay, int lastActivity, int[][] memo) {
+        
         if (currentDay == 0) {
             int maxPoints = 0;
+        
             for (int activity = 0; activity < 3; activity++) {
                 if (activity != lastActivity) {
                     maxPoints = Math.max(maxPoints, activities[0][activity]);
                 }
             }
+            
             return maxPoints;
         }
 
-        if (memo[currentDay][lastActivity] != - 1) {
+        if (memo[currentDay][lastActivity] != -1) {
             return memo[currentDay][lastActivity];
         }
 
         int maxPoints = 0;
+        
         for (int activity = 0; activity < 3; activity++) {
             if (activity != lastActivity) {
                 int currentPoints = activities[currentDay][activity] +
@@ -56,6 +159,7 @@ public class Ninja_Training {
     }
 
     private static int solveTabulation(int[][] activities) {
+        
         int numDays = activities.length;
         int[][] dp = new int[numDays][4];
 
@@ -66,6 +170,7 @@ public class Ninja_Training {
 
         for (int day = 1; day < numDays; day++) {
             for (int lastActivity = 0; lastActivity < 4; lastActivity++) {
+                
                 int maxPoints = 0;
                 for (int activity = 0; activity < 3; activity++) {
                     if (activity != lastActivity) {
@@ -73,6 +178,7 @@ public class Ninja_Training {
                         maxPoints = Math.max(maxPoints, currentPoints);
                     }
                 }
+                
                 dp[day][lastActivity] = maxPoints;
             }
         }
@@ -81,6 +187,7 @@ public class Ninja_Training {
     }
 
     private static int solveSpaceOptimized(int[][] activities) {
+        
         int numDays = activities.length;
         int[] prev = new int[4];
 
@@ -91,14 +198,17 @@ public class Ninja_Training {
 
         for (int day = 1; day < numDays; day++) {
             int[] current = new int[4];
+            
             for (int lastActivity = 0; lastActivity < 4; lastActivity++) {
                 int maxPoints = 0;
+                
                 for (int activity = 0; activity < 3; activity++) {
                     if (activity != lastActivity) {
                         int currentPoints = activities[day][activity] + prev[activity];
                         maxPoints = Math.max(maxPoints, currentPoints);
                     }
                 }
+                
                 current[lastActivity] = maxPoints;
             }
             prev = current;
@@ -289,4 +399,5 @@ public class Ninja_Training {
         System.out.println("║  🏆 Winner: Space Optimized (O(1) space, O(n) time)          ║");
         System.out.println("╚══════════════════════════════════════════════════════════════╝");
     }
+
 }
