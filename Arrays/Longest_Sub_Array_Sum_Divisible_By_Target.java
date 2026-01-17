@@ -58,7 +58,6 @@ public class Longest_Sub_Array_Sum_Divisible_By_Target {
         for (int i = 0; i < arr.length; i++) {
 
             prefixSum = ((prefixSum + arr[i]) % target + target) % target;
-
             if (prefixSum == 0) {
                 maxLength = i + 1;
             } else if (mp.containsKey(prefixSum)) {
@@ -67,13 +66,16 @@ public class Longest_Sub_Array_Sum_Divisible_By_Target {
                 mp.put(prefixSum, i);
             }
         }
+      
         return maxLength;
     }
 
     public static void main(String[] args) {
+      
         int[] arr = {2, 7, 6, 1, 4, 5, 1, 3, 4, 7};
         int target = 3;
         System.out.println("The longest sub-array sum divisible by " + target + " has the length of = " + longestSubArray(arr, target));
 
     }
+  
 }
