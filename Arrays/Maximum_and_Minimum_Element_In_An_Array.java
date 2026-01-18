@@ -17,18 +17,23 @@ import java.util.Arrays;
 public class Maximum_and_Minimum_Element_In_An_Array {
 
     public static void main(String[] args) {
-	int[] arr = {2, 3, 44, 11, 666, 754, 854, 8635};
+	
+		int[] arr = {2, 3, 44, 11, 666, 754, 854, 8635};
+	
+		int maxValue = Integer.MIN_VALUE;
+		int minValue = Integer.MAX_VALUE;
 
-	int maxValue = Integer.MIN_VALUE;
-	int minValue = Integer.MAX_VALUE;
+	
+		for (int number : arr) {
+			maxValue = Math.max(number, maxValue);
+			minValue = Math.min(number, minValue);
+		}
 
-	for (int number : arr) {
-	    maxValue = Math.max(number, maxValue);
-	    minValue = Math.min(number, minValue);
+	
+		System.out.println(Arrays.toString(arr));
+		System.out.println("Maximum value in the array is = " + maxValue);
+		System.out.println("Minimum value in the array is = " + minValue);
+		
 	}
-
-	System.out.println(Arrays.toString(arr));
-	System.out.println("Maximum value in the array is = " + maxValue);
-	System.out.println("Minimum value in the array is = " + minValue);
-    }
+	
 }
