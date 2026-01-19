@@ -100,11 +100,15 @@ public class Merge_Sort {
     }
 
     public static void main(String[] args) {
+      
         int[] arr = {9, 5, 38, 2, 5, 24, 95};
         System.out.println("Original Array is :");
         System.out.println(Arrays.toString(arr));
         mergeSort(arr, 0, arr.length - 1);
+      
         System.out.println("After Sorting the Array is :");
         System.out.println(Arrays.toString(arr));
+      
     }
+
 }
