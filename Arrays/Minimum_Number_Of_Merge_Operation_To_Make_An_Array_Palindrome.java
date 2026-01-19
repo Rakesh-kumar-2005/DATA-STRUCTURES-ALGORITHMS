@@ -50,6 +50,7 @@ public class Minimum_Number_Of_Merge_Operation_To_Make_An_Array_Palindrome {
 
 		  int i = 0;
 		  int j = n - 1;
+		 
 		  while (i <= j) {
 				if (arr[i] == arr[j]) {
 					 i++;
@@ -69,7 +70,9 @@ public class Minimum_Number_Of_Merge_Operation_To_Make_An_Array_Palindrome {
 	 }
 
 	 public static void main(String[] args) {
+		 
 		  int[] arr = {1, 2, 3, 4, 5};
 		  System.out.println("Minimum number of merge operations required to make the array palindrome : " + minOperations(arr));
 	 }
+	
 }
