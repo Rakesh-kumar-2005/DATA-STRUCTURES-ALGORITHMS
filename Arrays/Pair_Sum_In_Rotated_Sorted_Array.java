@@ -37,6 +37,7 @@ public class Pair_Sum_In_Rotated_Sorted_Array {
     }
 
     private static boolean findSum(int[] arr, int target) {
+            
         int n = arr.length;
         int pivot = findPivot(arr, n);
 
@@ -63,9 +64,11 @@ public class Pair_Sum_In_Rotated_Sorted_Array {
     }
 
     public static void main(String[] args) {
+        
         int[] arr = {7, 8, 9, 10, 33, 54, 1, 2, 3, 4, 5};
         int target = 7;
         findSum(arr, target);
+        
     }
 
 }
