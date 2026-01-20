@@ -64,6 +64,7 @@ public class Print_All_Combinations {
             data[index] = arr[i];
             combination(arr, data, i + 1, end, index + 1, key);
         }
+      
     }
 
     public static void main(String[] args) {
@@ -72,4 +73,5 @@ public class Print_All_Combinations {
         int[] data = new int[key];
         combination(arr, data, 0, arr.length - 1, 0, key);
     }
+
 }
