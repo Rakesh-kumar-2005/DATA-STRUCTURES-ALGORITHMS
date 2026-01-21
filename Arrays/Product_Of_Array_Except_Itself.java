@@ -23,9 +23,11 @@ import java.util.Arrays;
 public class Product_Of_Array_Except_Itself {
 
     private static int[] product(int[] arr) {
+            
         int n = arr.length;
         int[] prefix = new int[n];
         int[] suffix = new int[n];
+            
         int[] ans = new int[n];
         prefix[0] = 1;
 
@@ -43,6 +45,7 @@ public class Product_Of_Array_Except_Itself {
         }
 
         return ans;
+            
     }
 
     public static void main(String[] args) {
@@ -50,5 +53,7 @@ public class Product_Of_Array_Except_Itself {
         int[] ans = product(arr);
 
         System.out.println(Arrays.toString(ans));
+            
     }
+        
 }
