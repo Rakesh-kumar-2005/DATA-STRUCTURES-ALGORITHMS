@@ -68,6 +68,7 @@ public class Quick_Sort {
             quickSort(arr, low, pivot - 1);
             quickSort(arr, pivot + 1, high);
         }
+      
     }
 
     public static int partition(int[] arr, int low, int high) {
@@ -100,14 +101,16 @@ public class Quick_Sort {
     }
 
     public static void main(String[] args) {
+      
         int[] arr = {10, 7, 8, 9, 1, 5, 34, 6, 1, 5};
         System.out.println("Original array:");
+      
         printArray(arr);
-
         quickSort(arr, 0, arr.length - 1);
 
         System.out.println("Sorted array:");
         printArray(arr);
+      
     }
 
 }
