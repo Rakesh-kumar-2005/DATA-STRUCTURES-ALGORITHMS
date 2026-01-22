@@ -33,12 +33,15 @@ public class Reverse_the_Array {
     }
 
     public static void main(String[] args) {
-	int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-	System.out.println("Original Array : ");
-	System.out.println(Arrays.toString(arr));
-	reverseArray(arr);
-	System.out.println("After Reversing the Array : ");
-	System.out.println(Arrays.toString(arr));
+		
+	    int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+		System.out.println("Original Array : ");
+		System.out.println(Arrays.toString(arr));
+		
+		reverseArray(arr);
+		System.out.println("After Reversing the Array : ");	
+		System.out.println(Arrays.toString(arr));
+		
     }
 
 }
