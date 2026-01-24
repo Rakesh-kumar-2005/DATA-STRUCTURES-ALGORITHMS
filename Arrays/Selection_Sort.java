@@ -100,11 +100,16 @@ public class Selection_Sort {
     }
 
     public static void main(String[] args) {
+      
         int[] arr = {2, 5, 1, 3, 55, 23, 7, 31, 12, 663, 37};
         System.out.println("Original Array : ");
+      
         printArray(arr);
         selectionSort(arr);
+      
         System.out.println("After Sorting the Array is : ");
         printArray(arr);
+      
     }
+  
 }
