@@ -23,6 +23,7 @@ import java.util.Arrays;
 public class Sort_Colors {
 
     private static void sortColors(int[] arr) {
+        
         int i = 0;
         int j = 0;
         int k = arr.length - 1;
@@ -43,14 +44,19 @@ public class Sort_Colors {
                 k--;
             }
         }
+        
     }
 
     public static void main(String[] args) {
+            
         int[] arr = {2, 0, 2, 1, 1, 0, 0, 1, 2, 0};
         System.out.println("Before sorting the colors :");
         System.out.println(Arrays.toString(arr));
+        
         sortColors(arr);
         System.out.println("After sorting the colors");
         System.out.println(Arrays.toString(arr));
+        
     }
+        
 }
