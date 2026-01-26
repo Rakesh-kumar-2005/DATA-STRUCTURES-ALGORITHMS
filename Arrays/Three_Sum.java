@@ -24,6 +24,7 @@ import java.util.List;
 public class Three_Sum {
 
     public static void main(String[] args) {
+            
         int[] arr = {1, 2, 3, 0, -1, 0, 0, -2};
         List<List<Integer>> ans = threeSum(arr);
 
@@ -31,9 +32,11 @@ public class Three_Sum {
         for (List<Integer> triplet : ans) {
             System.out.println(triplet);
         }
+        
     }
 
     private static List<List<Integer>> threeSum(int[] arr) {
+        
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(arr); // Sort the array first
 
@@ -52,11 +55,9 @@ public class Three_Sum {
 
                 if (sum == 0) {
                     result.add(Arrays.asList(arr[i], arr[j], arr[k]));
-
                     // Move j and k to avoid duplicates
                     while (j < k && arr[j] == arr[j + 1]) j++;
                     while (j < k && arr[k] == arr[k - 1]) k--;
-
                     j++;
                     k--;
                 } else if (sum < 0) {
@@ -66,6 +67,8 @@ public class Three_Sum {
                 }
             }
         }
+        
         return result;
     }
+    
 }
