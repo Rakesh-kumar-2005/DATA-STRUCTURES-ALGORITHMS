@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class Permutation {
 
     private static void permute(char[] arr,int idx,ArrayList<ArrayList<Character>> ans){
+            
         int n = arr.length;
         if(idx == n-1){
             ArrayList<Character> temp = new ArrayList<>();
@@ -37,11 +38,13 @@ public class Permutation {
             ans.add(temp);
             return;
         }
+            
         for(int i=idx; i<n; i++){
             swap(arr,i,idx);
             permute(arr,idx+1,ans);
             swap(arr,idx,i);
         }
+            
     }
 
     private static void swap(char[] arr,int i, int j){
@@ -51,6 +54,7 @@ public class Permutation {
     }
 
     public static void main(String[] args) {
+            
         char[] arr = {'a','b','c','d'};
         ArrayList<ArrayList<Character>> ans = new ArrayList<>();
         permute(arr,0,ans);
@@ -59,5 +63,7 @@ public class Permutation {
         for (ArrayList<Character> an : ans) {
             System.out.println(an);
         }
+            
     }
+        
 }
