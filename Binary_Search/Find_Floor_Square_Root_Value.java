@@ -1,6 +1,7 @@
 package Binary_Search;
 
 /*
+
         Description :-
             We have to find out the Square root (Floor value) of a number...
             But we have condition - Time complexity shouldn't exceed O(log(n))...
@@ -10,6 +11,7 @@ package Binary_Search;
             > We have to get the mid-index ,then check for its square is less than the
                 given number ,then increment the low pointer otherwise decrement the high
                 pointer...
+                
 */
 
 public class Find_Floor_Square_Root_Value {
