@@ -10,7 +10,7 @@ package Binary_Search;
         Approach :-
             > So,the typical low and high pointer,then iterate until low <= high...
             > We have to get the mid-index ,then check for its neighbours ,if it satisfies
-                the condition then return it's value else check for if it's less than the next
+                the condition then return it's value else check for if it's less than the next.   
                 element then then update low otherwise update high...
                 
 */
