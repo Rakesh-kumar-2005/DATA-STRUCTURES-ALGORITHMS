@@ -98,6 +98,7 @@ public class Find_Peak_Element_In_A_2D_Array {
         for (int i = 1; i < mat.length; i++) {
             if (mat[i][col] > mat[maxRow][col]) {
                 maxRow = i;
+                
             }
         }
 
@@ -114,5 +115,6 @@ public class Find_Peak_Element_In_A_2D_Array {
 
 
     }
+
 
 }
