@@ -1,5 +1,176 @@
 package Arrays;
 
+/*
+
+Description:
+  This program finds the **length of the longest balanced subarray**
+  from a given integer array...
+
+  A subarray is called **balanced** if:
+    → Number of DISTINCT even elements
+      ==
+    → Number of DISTINCT odd elements...
+
+------------------------------------------------------------
+Problem Clarification:
+------------------------------------------------------------
+
+  • Order matters (subarray = continuous segment)...
+  • DISTINCT count is important...
+  • Duplicate values are counted only once...
+  • Balance is based on parity (even vs odd), not frequency...
+
+------------------------------------------------------------
+Key Definitions:
+------------------------------------------------------------
+
+  -> Even number:
+       number % 2 == 0...
+
+  -> Odd number:
+       number % 2 != 0...
+
+  -> Balanced Subarray:
+       distinctEvenCount == distinctOddCount...
+
+------------------------------------------------------------
+Approach Used (Brute Force):
+------------------------------------------------------------
+
+  Two nested loops are used to examine **all possible subarrays**...
+
+  Outer loop (i):
+    → Marks the starting index of subarray...
+
+  Inner loop (j):
+    → Expands the subarray from index i to j...
+
+------------------------------------------------------------
+Data Structures Used:
+------------------------------------------------------------
+
+  -> HashSet<Integer> even:
+       Stores DISTINCT even numbers in current subarray...
+
+  -> HashSet<Integer> odd:
+       Stores DISTINCT odd numbers in current subarray...
+
+  Why HashSet?
+    • Automatically avoids duplicates...
+    • size() gives distinct count directly...
+    • O(1) average insert time...
+
+------------------------------------------------------------
+Algorithm Steps:
+------------------------------------------------------------
+
+STEP 1:
+  Initialize max = 0...
+
+STEP 2:
+  For each starting index i:
+    • Create fresh HashSet for even and odd...
+
+STEP 3:
+  For each ending index j ≥ i:
+    • Check parity of numbers[j]...
+    • Add it to even or odd HashSet...
+    • Compare sizes:
+         if even.size() == odd.size():
+             update max length...
+
+STEP 4:
+  Return max as final answer...
+
+------------------------------------------------------------
+Example Walkthrough:
+------------------------------------------------------------
+
+Input:
+  [1, 2, 3, 4]...
+
+Process:
+  i = 0
+    j = 0 → [1] → evens={}, odds={1} → 0≠1 ✗
+    j = 1 → [1,2] → evens={2}, odds={1} → 1=1 ✓ len=2
+    j = 2 → [1,2,3] → evens={2}, odds={1,3} → 1≠2 ✗
+    j = 3 → [1,2,3,4] → evens={2,4}, odds={1,3} → 2=2 ✓ len=4
+
+Result:
+  max = 4...
+
+------------------------------------------------------------
+Important Observations:
+------------------------------------------------------------
+
+  • DISTINCT count matters:
+      [2, 2, 2] → distinct evens = {2} → count = 1...
+
+  • Duplicates do NOT increase balance...
+
+  • Subarrays with only evens or only odds
+    can NEVER be balanced...
+
+------------------------------------------------------------
+Edge Cases Handled:
+------------------------------------------------------------
+
+  ✓ Empty array → result = 0...
+  ✓ Single element → result = 0...
+  ✓ All even numbers → result = 0...
+  ✓ All odd numbers → result = 0...
+  ✓ Entire array balanced → return full length...
+
+------------------------------------------------------------
+Why This Solution Works:
+------------------------------------------------------------
+
+  • Tries every possible subarray...
+  • Tracks DISTINCT parity counts correctly...
+  • Guarantees correctness for all inputs...
+
+  Trade-off:
+    → Higher time complexity, but very clear logic...
+
+------------------------------------------------------------
+Complexity Analysis:
+------------------------------------------------------------
+
+  Time Complexity:
+    O(n²)
+      • Outer loop runs n times...
+      • Inner loop runs up to n times...
+
+  Space Complexity:
+    O(n)
+      • HashSets can store up to n distinct elements...
+
+------------------------------------------------------------
+Optimization Note:
+------------------------------------------------------------
+
+  More optimal O(n) solutions exist using:
+    → Prefix sums
+    → HashMaps
+
+  However:
+    This brute-force approach is:
+      • Easy to understand...
+      • Correct...
+      • Suitable for moderate constraints...
+
+------------------------------------------------------------
+Final Insight:
+------------------------------------------------------------
+
+  This problem is NOT about counting elements...
+  It is about counting **unique parity values**...
+
+  HashSet + nested subarray expansion
+  gives a clean and reliable solution...
+
+*/
+
 import java.util.HashSet;
 
 public class Longest_Balanced_Subarray_I {
@@ -30,17 +201,23 @@ public class Longest_Balanced_Subarray_I {
     }
 
     private static String arrayToString(int[] arr) {
-        if (arr.length == 0) return "[]";
+        
+        if (arr.length == 0) {
+            return "[]";
+        }
+        
         StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < arr.length; i++) {
             sb.append(arr[i]);
             if (i < arr.length - 1) sb.append(", ");
         }
+        
         sb.append("]");
         return sb.toString();
     }
 
     public static void main(String[] args) {
+
         System.out.println("╔══════════════════════════════════════════════════════════════╗");
         System.out.println("║                LONGEST BALANCED SUBARRAY I                   ║");
         System.out.println("║ Find longest subarray with equal distinct even & odd numbers ║");
@@ -279,4 +456,5 @@ public class Longest_Balanced_Subarray_I {
         System.out.println("╚══════════════════════════════════════════════════════════════╝");
 
     }
+
 }
