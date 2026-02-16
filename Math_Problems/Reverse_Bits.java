@@ -126,6 +126,7 @@ public class Reverse_Bits {
 
 
     public static void main(String[] args) {
+      
         System.out.println("╔══════════════════════════════════════════════════════════════╗");
         System.out.println("║                    REVERSE BITS                              ║");
         System.out.println("║  Reverse the binary representation of a 32-bit integer       ║");
