@@ -1,5 +1,134 @@
 package Arrays;
 
+/*
+
+Description:
+  Following program demonstrates the solution to the "Special Positions in a Binary Matrix" problem by identifying cells that contain 1 while all other elements in the same row and column are 0...
+
+Problem Statement:
+  -> You are given a binary matrix consisting of only 0s and 1s...
+  -> A position (i, j) is considered a special position if:
+       • mat[i][j] = 1...
+       • All other elements in row i are 0...
+       • All other elements in column j are 0...
+  -> The goal is to count how many such special positions exist in the matrix...
+
+Approach:
+  > Two strategies are demonstrated:
+     i. Brute Force validation for each cell containing 1...
+     ii. Optimized solution using row and column precomputation...
+
+> Brute Force Logic:
+  -> For every cell containing 1:
+       • Compute sum of all elements in its row...
+       • Compute sum of all elements in its column...
+  -> If both sums equal 1, the cell is a valid special position...
+
+> Brute Force Algorithm Steps:
+  -> Iterate through each cell (i, j)...
+  -> If mat[i][j] == 1:
+       * Compute row sum...
+       * Compute column sum...
+  -> If rowSum == 1 AND colSum == 1:
+       * Count this position as special...
+
+> Limitation of Brute Force:
+  -> Each cell may require scanning an entire row and column...
+  -> This increases time complexity significantly for large matrices...
+
+------------------------------------------------------------
+
+> Optimized Approach (Row and Column Preprocessing):
+
+  -> Precompute the number of 1s in every row and every column...
+  -> Then verify if a cell qualifies as a special position in constant time...
+
+> Optimized Algorithm Steps:
+  -> Create two arrays:
+       rowSum[rows]...
+       colSum[cols]...
+
+  -> Traverse the matrix once:
+       rowSum[i] += mat[i][j]...
+       colSum[j] += mat[i][j]...
+
+  -> Traverse matrix again:
+       if mat[i][j] == 1 AND rowSum[i] == 1 AND colSum[j] == 1:
+            increment answer...
+
+  -> Return total count...
+
+------------------------------------------------------------
+
+> Key Insight:
+  -> If rowSum[i] == 1 and colSum[j] == 1:
+       the cell mat[i][j] must be the only 1 in its row and column...
+  -> Therefore it is a special position...
+
+------------------------------------------------------------
+
+> Example:
+
+  Matrix:
+
+        1 0 0
+        0 0 1
+        1 0 0
+
+  Analysis:
+       (0,0):
+          row sum = 1...
+          col sum = 2 → not special...
+
+       (1,2):
+          row sum = 1...
+          col sum = 1 → special...
+
+       (2,0):
+          row sum = 1...
+          col sum = 2 → not special...
+
+  Result:
+       total special positions = 1...
+
+------------------------------------------------------------
+
+> Edge Cases:
+  -> Matrix with all zeros → result = 0...
+  -> Single element matrix containing 1 → result = 1...
+  -> Single row matrix → valid if only one 1 exists...
+  -> Single column matrix → valid if only one 1 exists...
+  -> Rectangular matrices also handled correctly...
+
+------------------------------------------------------------
+
+> Helper Function:
+  -> printMatrix() prints the matrix for visualization during testing...
+
+------------------------------------------------------------
+
+> Time and Space Complexity:
+
+  -> Brute Force:
+       Time Complexity: O(m × n × (m + n))...
+       Space Complexity: O(1)...
+
+  -> Optimized Approach:
+       Time Complexity: O(m × n)...
+       Space Complexity: O(m + n)...
+
+  where:
+       m = number of rows...
+       n = number of columns...
+
+------------------------------------------------------------
+
+> Advantages of Optimized Method:
+  -> Eliminates repeated scanning of rows and columns...
+  -> Uses simple prefix counting strategy...
+  -> Achieves linear traversal of the matrix...
+
+*/
 public class Special_Positions_In_A_Binary_Matrix {
 
     private static boolean bruteForce(int[][] mat, int row, int col, int rows, int cols) {
@@ -43,6 +172,7 @@ public class Special_Positions_In_A_Binary_Matrix {
     }
 
     private static void printMatrix(int[][] mat) {
+        
         for (int[] ints : mat) {
             System.out.print("  ");
             for (int j = 0; j < mat[0].length; j++) {
@@ -50,13 +180,14 @@ public class Special_Positions_In_A_Binary_Matrix {
             }
             System.out.println();
         }
+        
     }
 
     public static void main(String[] args) {
 
         System.out.println("╔══════════════════════════════════════════════════════════════╗");
         System.out.println("║           SPECIAL POSITIONS IN A BINARY MATRIX               ║");
-        System.out.println("║  Count positions where cell is 1 and all others in its      ║");
+        System.out.println("║  Count positions where cell is 1 and all others in its       ║");
         System.out.println("║  row and column are 0                                        ║");
         System.out.println("╚══════════════════════════════════════════════════════════════╝\n");
 
@@ -231,4 +362,5 @@ public class Special_Positions_In_A_Binary_Matrix {
         System.out.println("╚══════════════════════════════════════════════════════════════╝");
 
     }
+
 }
