@@ -1,5 +1,139 @@
 package Math_Problems;
 
+/*
+
+Description:
+  Following program demonstrates the solution to the "Minimum Changes To Make Alternating Binary String" problem by determining the minimum number of character flips required to convert a binary string into an alternating pattern...
+
+Problem Statement:
+  -> You are given a binary string consisting of characters '0' and '1'...
+  -> A binary string is considered alternating if no two adjacent characters are the same...
+  -> Two possible alternating patterns exist:
+       • "010101..."
+       • "101010..."
+  -> The goal is to determine the minimum number of character changes needed to transform the given string into one of these valid alternating patterns...
+
+Approach:
+  > Two methods are implemented:
+     i. Optimized single-pass comparison method...
+     ii. Brute force simulation method...
+
+> Key Observation:
+  -> Only two valid alternating patterns exist for any binary string...
+  -> Therefore, calculate the cost to convert the string into both patterns and return the minimum...
+
+------------------------------------------------------------
+
+> Optimized Approach:
+
+  -> Traverse the string once...
+  -> Compare each character with the expected character of both alternating patterns...
+
+  Pattern 1:
+       "010101..."
+       Expected character at index i:
+           if i is even → '0'
+           if i is odd  → '1'
+
+  Pattern 2:
+       "101010..."
+       Expected character at index i:
+           if i is even → '1'
+           if i is odd  → '0'
+
+Algorithm Steps:
+  -> Initialize two counters:
+       c1 = mismatch count for pattern "010101..."
+       c2 = mismatch count for pattern "101010..."
+
+  -> Traverse the string from i = 0 to n-1:
+       if s[i] != expected character of pattern1:
+            increment c1...
+
+       if s[i] != expected character of pattern2:
+            increment c2...
+
+  -> Return min(c1, c2)...
+
+------------------------------------------------------------
+
+> Brute Force Approach:
+
+  -> Simulate both alternating patterns explicitly using a flag variable...
+
+Steps:
+  -> Assume pattern starting with '1'...
+  -> Traverse string and count mismatches...
+  -> Flip expected character using a boolean flag...
+
+  -> Repeat the process assuming pattern starting with '0'...
+
+  -> Return minimum mismatch count...
+
+------------------------------------------------------------
+
+Example Execution:
+
+Input:
+  "0100"
+
+Pattern 1 → "0101"
+
+  index 0: '0' == '0' ✓
+  index 1: '1' == '1' ✓
+  index 2: '0' == '0' ✓
+  index 3: '0' ≠ '1' ✗
+
+  changes = 1...
+
+Pattern 2 → "1010"
+
+  index 0: '0' ≠ '1' ✗
+  index 1: '1' ≠ '0' ✗
+  index 2: '0' ≠ '1' ✗
+  index 3: '0' == '0' ✓
+
+  changes = 3...
+
+Minimum operations = min(1,3) = 1...
+
+------------------------------------------------------------
+
+Important Insight:
+  -> Because alternating patterns are deterministic, we do not need to actually build new strings...
+  -> Instead, simply count mismatches with expected characters...
+
+------------------------------------------------------------
+
+Edge Cases:
+  -> Single character string → already alternating...
+  -> String already alternating → result = 0...
+  -> All identical characters → roughly half the characters must change...
+  -> Works for both even and odd length strings...
+
+------------------------------------------------------------
+
+Advantages of Optimized Method:
+  -> Single traversal of the string...
+  -> No additional memory required...
+  -> Avoids explicit pattern generation...
+
+------------------------------------------------------------
+
+Time and Space Complexity:
+
+  -> Time Complexity: O(n), where n is the length of the string...
+  -> Space Complexity: O(1), constant extra space...
+
+------------------------------------------------------------
+
+Applications:
+  -> Pattern validation problems...
+  -> Binary string transformations...
+  -> Competitive programming optimization tasks...
+  -> Interview questions involving greedy or string manipulation...
+
+*/
 public class Minimum_Changes_To_Make_Alternating_Binary_String {
 
     // Optimized version...
