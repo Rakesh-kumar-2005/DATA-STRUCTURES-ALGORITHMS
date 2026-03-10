@@ -3,12 +3,12 @@ package Queue;
 /*
     Description :-
         Given an array of integers and an integer 𝐾, you need to find the first negative integer
-        in each window of size 𝐾. If a window does not contain a negative integer, print 0 for that window.
+        in each window of size 𝐾. If a window does not contain a negative integer, print 0 for that window...
 
         > Example :-
-            Consider the array [−10,20,−30,−40,50,60,−70,80,90] and 𝐾 = 3.
+            Consider the array [−10,20,−30,−40,50,60,−70,80,90] and 𝐾 = 3...
 
-            The output should be = [−10,−30,−30,−40,−70,−70,−70].
+            The output should be = [−10,−30,−30,−40,−70,−70,−70]...
 
 
     Approach :-
@@ -67,12 +67,17 @@ public class First_negative_in_each_window {
     }
 
     public static void main(String[] args) {
+        
         int[] arr = {-1,3,4,-10,4,-23,493,-46,344,-3,432,-43};
         System.out.println("Original Array is : ");
+       
         print(arr);
         int key = 3;
+        
         int[] ans = firstNegative(arr,arr.length,key);
         System.out.println("First negative number in each " + key + " window are : ");
+        
         print(ans);
     }
+    
 }
