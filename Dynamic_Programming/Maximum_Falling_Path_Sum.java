@@ -1,5 +1,215 @@
 package Dynamic_Programming;
 
+/*
+
+Description:
+  Following program demonstrates the solution to the "Maximum Falling Path Sum" problem using Dynamic Programming techniques to compute the maximum sum path from the top row of a matrix to the bottom row...
+
+Problem Statement:
+  -> You are given an n × m matrix of integers...
+  -> A falling path starts at any element in the first row...
+  -> From position (i, j) you can move to the next row in three possible directions:
+       • Down            → (i + 1, j)...
+       • Diagonal-left   → (i + 1, j - 1)...
+       • Diagonal-right  → (i + 1, j + 1)...
+  -> The goal is to find the maximum possible sum along any valid falling path from the top row to the bottom row...
+
+Approach:
+  > Dynamic Programming strategies used in this program:
+     i. Recursive solution (top-down exploration)...
+     ii. Memoization (recursive DP with caching)...
+     iii. Tabulation (bottom-up DP)...
+     iv. Space optimized DP...
+
+Recursive Relation:
+  -> Let f(i, j) represent the maximum path sum reaching cell (i, j)...
+
+       f(i, j) = grid[i][j] + max(
+                      f(i-1, j),
+                      f(i-1, j-1),
+                      f(i-1, j+1)
+                 )...
+
+Base Case:
+  -> When i == 0 (first row):
+       return grid[0][j]...
+
+Boundary Condition:
+  -> If j < 0 or j >= number of columns:
+       return Integer.MIN_VALUE to represent invalid paths...
+
+------------------------------------------------------------
+
+> Recursive Approach:
+
+  -> Start from a cell in the last row...
+  -> Recursively compute maximum path sum from previous row...
+  -> Explore three directions:
+       up...
+       left diagonal...
+       right diagonal...
+
+  Example:
+
+       2 1 3
+       6 5 4
+       7 8 9
+
+  Possible maximum path:
+       2 → 6 → 8 = 16
+       3 → 4 → 9 = 16
+
+Time Complexity:
+  -> O(3^n) exponential...
+
+Space Complexity:
+  -> O(n) recursion stack...
+
+------------------------------------------------------------
+
+> Memoization (Top-Down DP):
+
+  -> Store previously computed states in dp[i][j]...
+  -> Prevent repeated computations for overlapping subproblems...
+
+Steps:
+  -> Initialize dp array with -1...
+  -> Before computing a cell, check if result already exists...
+  -> Return stored value if available...
+
+Time Complexity:
+  -> O(n × m)...
+
+Space Complexity:
+  -> O(n × m) + recursion stack...
+
+------------------------------------------------------------
+
+> Tabulation (Bottom-Up DP):
+
+  -> Build DP table starting from the first row...
+
+Steps:
+  -> Initialize dp[0][j] = grid[0][j] for all columns...
+  -> For each row i from 1 to n-1:
+       compute maximum path value using previous row...
+
+Transition Formula:
+
+       dp[i][j] = grid[i][j] + max(
+                         dp[i-1][j],
+                         dp[i-1][j-1],
+                         dp[i-1][j+1]
+                     )...
+
+  -> The final answer is the maximum value in the last row...
+
+Example DP Table:
+
+       Grid:
+         2 1 3
+         6 5 4
+         7 8 9
+
+       DP:
+         2 1 3
+         8 7 7
+        15 16 16
+
+  Maximum falling path sum = 16...
+
+Time Complexity:
+  -> O(n × m)...
+
+Space Complexity:
+  -> O(n × m)...
+
+------------------------------------------------------------
+
+> Space Optimization:
+
+  -> Observe that each row only depends on the previous row...
+  -> Instead of storing entire DP table:
+       maintain two arrays:
+           prev[] → previous row...
+           curr[] → current row...
+
+Transition:
+
+       curr[j] = grid[i][j] + max(
+                           prev[j],
+                           prev[j-1],
+                           prev[j+1]
+                       )...
+
+  -> After computing a row, assign curr → prev...
+
+Space Complexity reduces from O(n × m) → O(m)...
+
+------------------------------------------------------------
+
+Example Execution (from main):
+
+  Matrix:
+
+        2  1  3
+        6  5  4
+        7  8  9
+
+  Maximum path options:
+
+       2 → 6 → 8 = 16
+       3 → 4 → 9 = 16
+
+  Result:
+       Maximum Falling Path Sum = 16...
+
+------------------------------------------------------------
+
+Edge Cases:
+  -> Single row matrix → answer is max element in row...
+  -> Single column matrix → path is straight down...
+  -> Negative numbers allowed → choose least negative path...
+  -> Matrix with large values handled correctly...
+
+------------------------------------------------------------
+
+Why Dynamic Programming Works:
+  -> Problem exhibits overlapping subproblems...
+  -> Optimal substructure:
+       best path to current cell depends on best paths to previous row cells...
+
+------------------------------------------------------------
+
+Applications:
+  -> Grid path optimization problems...
+  -> Dynamic programming on matrices...
+  -> Image processing seam carving...
+  -> Game AI movement scoring...
+  -> Competitive programming path problems...
+
+------------------------------------------------------------
+
+Time and Space Complexity Summary:
+
+  Recursive:
+       Time  → O(3^n)...
+       Space → O(n)...
+
+  Memoization:
+       Time  → O(n × m)...
+       Space → O(n × m)...
+
+  Tabulation:
+       Time  → O(n × m)...
+       Space → O(n × m)...
+
+  Space Optimized:
+       Time  → O(n × m)...
+       Space → O(m)...
+
+*/
+
 public class Maximum_Falling_Path_Sum {
 
     private static int recursive(int[][] grid, int i, int j) {
@@ -255,6 +465,7 @@ public class Maximum_Falling_Path_Sum {
         System.out.println("║    Time:  O(n×m) - Process each cell once                    ║");
         System.out.println("║    Space: O(m) with optimization, O(n×m) without             ║");
         System.out.println("╚══════════════════════════════════════════════════════════════╝");
+        
     }
 
 }
