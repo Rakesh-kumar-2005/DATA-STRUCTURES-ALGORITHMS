@@ -1,5 +1,221 @@
 package Dynamic_Programming;
 
+/*
+
+Description:
+  Following program demonstrates the solution to the "Minimum Falling Path Sum" problem using Dynamic Programming
+      techniques to determine the minimum path sum from the top row to the bottom row of a matrix...
+
+Problem Statement:
+  -> You are given an n × m matrix of integers...
+  -> A falling path starts at any element in the first row...
+  -> From position (i, j) you can move to:
+       • Down           → (i + 1, j)...
+       • Diagonal-left  → (i + 1, j - 1)...
+       • Diagonal-right → (i + 1, j + 1)...
+  -> The goal is to compute the minimum possible sum of a valid falling path from the top row to the bottom row...
+
+Core Idea:
+  -> The minimum path to reach a cell depends on the minimum path of reachable cells from the previous row...
+  -> For each cell we consider three possible transitions...
+
+Recursive Relation:
+  minPath(i, j) = grid[i][j] + min(
+                       minPath(i-1, j),
+                       minPath(i-1, j-1),
+                       minPath(i-1, j+1)
+                   )...
+
+Base Case:
+  -> If we reach the first row:
+       return grid[0][j]...
+
+Boundary Condition:
+  -> If column index goes outside matrix:
+       return Integer.MIN_VALUE to represent invalid move...
+
+Approach:
+  > Four Dynamic Programming implementations are demonstrated:
+     i. Recursive solution (brute-force exploration)...
+     ii. Memoization (top-down DP with caching)...
+     iii. Tabulation (bottom-up DP)...
+     iv. Space optimized DP using arrays...
+
+------------------------------------------------------------
+
+> Recursive Approach:
+
+  -> Start from a cell in the last row...
+  -> Recursively explore all valid paths upward...
+  -> Select the minimum sum among the three possible directions...
+
+Example:
+
+       2  1  3
+       6  5  4
+       7  8  9
+
+Possible paths:
+
+       1 → 5 → 7 = 13
+       1 → 4 → 8 = 13
+       2 → 5 → 8 = 15
+
+Minimum path sum = 13...
+
+Time Complexity:
+  -> O(3^n) exponential due to repeated exploration...
+
+Space Complexity:
+  -> O(n) recursion stack...
+
+------------------------------------------------------------
+
+> Memoization (Top-Down DP):
+
+  -> Store results of subproblems in dp[i][j]...
+  -> If a state is already computed, reuse stored value...
+
+Steps:
+  -> Initialize dp array with -1...
+  -> Check dp before recursion...
+  -> Store computed value...
+
+Time Complexity:
+  -> O(n × m)...
+
+Space Complexity:
+  -> O(n × m) + recursion stack...
+
+------------------------------------------------------------
+
+> Tabulation (Bottom-Up DP):
+
+  -> Build solution row by row starting from the first row...
+
+Steps:
+  -> Initialize dp[0][j] = grid[0][j]...
+  -> For each row i from 1 to n-1:
+       compute minimum value using previous row...
+
+Transition Formula:
+
+       dp[i][j] = grid[i][j] + min(
+                           dp[i-1][j],
+                           dp[i-1][j-1],
+                           dp[i-1][j+1]
+                       )...
+
+  -> Final answer is the minimum value in the last row...
+
+Example DP Table:
+
+       Grid:
+         2  1  3
+         6  5  4
+         7  8  9
+
+       DP Table:
+         2  1  3
+         7  6  5
+        13 13 14
+
+  Minimum falling path sum = 13...
+
+Time Complexity:
+  -> O(n × m)...
+
+Space Complexity:
+  -> O(n × m)...
+
+------------------------------------------------------------
+
+> Space Optimization:
+
+  -> Each row only depends on the previous row...
+  -> Use two arrays instead of full matrix...
+
+Arrays Used:
+       prev[] → values of previous row...
+       curr[] → values of current row...
+
+Transition:
+
+       curr[j] = grid[i][j] + min(
+                            prev[j],
+                            prev[j-1],
+                            prev[j+1]
+                        )...
+
+After processing each row:
+       prev = curr...
+
+Space Complexity reduces to O(m)...
+
+------------------------------------------------------------
+
+Example Execution:
+
+Matrix:
+
+       2   1   3
+       6   5   4
+       7   8   9
+
+Minimum Path:
+
+       1 → 5 → 7 = 13
+       or
+       1 → 4 → 8 = 13
+
+Final Result:
+       Minimum Falling Path Sum = 13...
+
+------------------------------------------------------------
+
+Edge Cases:
+  -> Single row matrix → minimum element of that row...
+  -> Single column matrix → path moves straight downward...
+  -> Negative values allowed in matrix...
+  -> Works for rectangular matrices...
+
+------------------------------------------------------------
+
+Why Dynamic Programming Works:
+  -> Overlapping subproblems exist while computing paths...
+  -> Optimal substructure property:
+       best path to current cell depends on best path to previous row cells...
+
+------------------------------------------------------------
+
+Applications:
+  -> Grid-based optimization problems...
+  -> Pathfinding algorithms...
+  -> Image processing seam calculations...
+  -> Competitive programming DP problems...
+
+------------------------------------------------------------
+
+Time and Space Complexity Summary:
+
+  Recursive:
+       Time  → O(3^n)...
+       Space → O(n)...
+
+  Memoization:
+       Time  → O(n × m)...
+       Space → O(n × m)...
+
+  Tabulation:
+       Time  → O(n × m)...
+       Space → O(n × m)...
+
+  Space Optimized:
+       Time  → O(n × m)...
+       Space → O(m)...
+
+*/
+
 public class Minimum_Falling_Path_Sum {
 
     private static int recursive(int[][] grid, int i, int j) {
@@ -241,4 +457,5 @@ public class Minimum_Falling_Path_Sum {
         System.out.println("╚══════════════════════════════════════════════════════════════╝");
 
     }
+    
 }
