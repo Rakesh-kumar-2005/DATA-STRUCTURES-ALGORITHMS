@@ -3,7 +3,8 @@ package Dynamic_Programming;
 /*
 
 Description:
-  Following program demonstrates the solution to the "Partition Array Into Two Arrays To Minimize Sum Difference" problem using multiple approaches including Dynamic Programming, HashSet-based subset generation, and Meet-in-the-Middle optimization...
+  Following program demonstrates the solution to the "Partition Array Into Two Arrays To Minimize Sum Difference" problem using
+    multiple approaches including Dynamic Programming, HashSet-based subset generation, and Meet-in-the-Middle optimization...
 
 Problem Statement:
   -> You are given an integer array nums[]...
