@@ -25,6 +25,7 @@ public class Floor_And_Ceil_In_Sorted_Array {
     }
 
     private static int floor(int[] arr, int target) {
+            
         int left = 0;
         int right = arr.length - 1;
 
@@ -41,10 +42,12 @@ public class Floor_And_Ceil_In_Sorted_Array {
                 right = mid - 1;
             }
         }
+        
         return floor;
     }
 
     private static int ceil(int[] arr, int target) {
+        
         int left = 0;
         int right = arr.length - 1;
 
@@ -61,14 +64,19 @@ public class Floor_And_Ceil_In_Sorted_Array {
                 left = mid + 1;
             }
         }
+        
         return ceil;
     }
 
     public static void main(String[] args) {
+        
         int[] arr = {13, 23, 34, 54, 875, 4545, 9979};
         int target = 54;
         int[] ans = getFloorAndCeil(arr, target);
+
         System.out.println("The floor value of the target " + target + " is = " + ans[0]);
         System.out.println("The ceil value of the target " + target + " is = " + ans[1]);
+        
     }
+    
 }
