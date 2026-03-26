@@ -20,6 +20,7 @@ package Binary_Search;
 public class KOKO_Eating_Bananas {
 
     private static int minEatingSpeed(int[] arr, int h) {
+            
         int low = 0;
         int high = 0;
 
@@ -28,6 +29,7 @@ public class KOKO_Eating_Bananas {
         }
 
         while (low <= high) {
+                
             int mid = (low + high) / 2;
             int total = helper(arr, mid);
 
@@ -37,6 +39,7 @@ public class KOKO_Eating_Bananas {
                 low = mid + 1;
             }
         }
+            
         return low;
     }
 
@@ -49,6 +52,7 @@ public class KOKO_Eating_Bananas {
     }
 
     public static void main(String[] args) {
+            
         int[] arr = {30, 11, 23, 4, 20};
         int hours = 6;
         System.out.println("KOKO's minimum eating speed is = " + minEatingSpeed(arr, hours));
