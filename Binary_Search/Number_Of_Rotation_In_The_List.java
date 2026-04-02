@@ -55,6 +55,7 @@ public class Number_Of_Rotation_In_The_List {
     }
 
     public static void main(String[] args) {
+            
         List<Integer> arr = new ArrayList<>();
         arr.add(6);
         arr.add(7);
@@ -66,5 +67,7 @@ public class Number_Of_Rotation_In_The_List {
         arr.add(5);
 
         System.out.println("The List has been rotated : " + findKRotation(arr) + " times");
+            
     }
+        
 }
