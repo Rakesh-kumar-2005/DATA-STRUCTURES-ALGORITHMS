@@ -36,6 +36,7 @@ package Linked_List;
 public class Odd_Even_LinkedList_With_Optimized_Space_Complexity {
 
     private static class Node {
+            
         public int val;
         Node next;
 
@@ -43,10 +44,14 @@ public class Odd_Even_LinkedList_With_Optimized_Space_Complexity {
             this.val = val;
             this.next = null;
         }
+        
     }
 
     private static Node oddEvenList(Node head) {
-        if (head == null || head.next == null) return head;
+        
+        if (head == null || head.next == null) {
+            return head;
+        }
 
         Node odd = head;
         Node even = head.next;
@@ -56,14 +61,17 @@ public class Odd_Even_LinkedList_With_Optimized_Space_Complexity {
         while (even != null && even.next != null) {
             odd.next = even.next;
             odd = odd.next;
+            
             even.next = odd.next;
             even = even.next;
         }
+        
         odd.next = evenHead;
         return head;
     }
 
     public static void main(String[] args) {
+        
         Node a = new Node(1);
         Node b = new Node(3);
         Node c = new Node(5);
@@ -95,4 +103,5 @@ public class Odd_Even_LinkedList_With_Optimized_Space_Complexity {
             ans = ans.next;
         }
     }
+    
 }
