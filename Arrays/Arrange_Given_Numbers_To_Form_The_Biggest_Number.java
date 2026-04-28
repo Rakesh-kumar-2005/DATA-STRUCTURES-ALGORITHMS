@@ -71,9 +71,13 @@ public class Arrange_Given_Numbers_To_Form_The_Biggest_Number {
         return ans.toString();
     }
 
+  
     public static void main(String[] args) {
+   
         int[] arr = {12, 345, 2, 6, 7896};
         System.out.println("The given array is = " + Arrays.toString(arr));
         System.out.println("The Biggest number that could be formed from the above array is = " + arrangeNumbers(arr));
+    
     }
+  
 }
