@@ -3,8 +3,8 @@ package Tree;
 /*
 
 Description:
-  This program converts an **unbalanced Binary Search Tree (BST)**
-  into a **height-balanced BST** while preserving the BST property...
+  This program converts an "Unbalanced Binary Search Tree (BST)"
+  into a "height-balanced BST" while preserving the BST property...
 
 Definition:
   -> Binary Search Tree (BST):
