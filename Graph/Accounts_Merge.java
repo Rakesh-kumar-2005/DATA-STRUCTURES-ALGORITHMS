@@ -71,6 +71,7 @@ import java.util.*;
 public class Accounts_Merge {
 
     static class DisjointSet {
+      
         ArrayList<Integer> parent = new ArrayList<>();
         ArrayList<Integer> size = new ArrayList<>();
 
