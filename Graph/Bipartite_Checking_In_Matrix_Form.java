@@ -3,7 +3,8 @@ package Graph;
 /*
 
 Description:
-  Following program demonstrates the solution to the "Bipartite Graph Checking" problem using Breadth-First Search (BFS) and Color-Based Approach.
+  Following program demonstrates the solution to the "Bipartite Graph Checking" problem 
+    using Breadth-First Search (BFS) and Color-Based Approach.
 
 Problem Statement:
   -> Given an undirected graph represented as an adjacency list or matrix.
