@@ -154,6 +154,7 @@ public class Separate_The_Digits_In_An_Array {
     }
 
     public static void main(String[] args) {
+        
         System.out.println("╔══════════════════════════════════════════════════════════════╗");
         System.out.println("║           SEPARATE THE DIGITS IN AN ARRAY                    ║");
         System.out.println("║  Break each number into individual digits left to right      ║");
